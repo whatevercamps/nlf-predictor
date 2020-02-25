@@ -1,0 +1,76 @@
+{
+  "jugadores": [
+    {
+      "name": "pedro",
+      "pos": "wr",
+      "stats": {
+        "passing": {
+          "CMP": 123,
+          "ATT": 123
+        },
+        "rushing": {
+          "CMP": 131,
+          "ATT": 1123
+        }
+      }
+    },
+    {
+      "pos": "def",
+      "name": "vikings",
+      "stats": {
+        "defense": {
+          "YDS/G": 123
+        }
+      }
+    }
+  ],
+
+  "usuarios": [
+    {
+      "username": "jose123",
+      "plantillas": [
+        {
+          "posiciones": {
+            "wr": [
+              {},
+              {
+                "name": "pedro",
+                "pos": "wr",
+                "stats": {
+                  "passing": {
+                    "CMP": 123,
+                    "ATT": 123
+                  },
+                  "rushing": {
+                    "CMP": 131,
+                    "ATT": 1123
+                  }
+                }
+              },
+              {}
+            ],
+            "rb": [{}, {}, {}],
+            "w/r": [
+              {
+                "pos": "wr",
+                "name": "pedro",
+                "stats": 13
+              }
+            ],
+            "def": [
+              {
+                "pos": "def",
+                "name": "vikings",
+                "stats": {
+                  "defense": {
+                    "YDS/G": 123
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
