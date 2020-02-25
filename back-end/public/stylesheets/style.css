@@ -1,8 +1,250 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+:root{
+  --red: #DD1D1F;
+  --dark-blue: #003876;
+  --light-blue: #2DC3ED;
+  --white: #FFFFFF;
+  --gray: #DCC0C0;
+}
+       
+p {
+    font-family: 'Nunito Sans';
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
 }
 
-a {
-  color: #00B7FF;
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
 }
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.navbar i{
+  color: var(--red);
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+#sidebar {
+  font-family: 'Nunito Sans';
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100vh;
+    z-index: 999;
+    background: var(--dark-blue);
+    color: #fff;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: var(--dark-blue);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#dismiss:hover {
+    color: #2DC3ED;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: var(--dark-blue);
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: #ffffff;
+    padding-left: 20px;
+}
+
+#sidebar ul li a:hover {
+    color: var(--light-blue);
+    background: #fff;
+    text-decoration: none;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+  font-family: 'Nunito Sans';
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#content .container .row .playerList, .playerResume{
+  border-radius: 10px;
+  background-color: #F6F6F6;
+}
+
+#content .container .row .playerList{
+  margin-right: 6px;
+  padding: 20px 15px 20px 15px;
+}
+
+#content .container .row .playerResume{
+  margin-left: 6px;
+  padding: 20px;
+}
+
+#content p{
+  font-size: 12px;
+}
+
+#content #season{
+  font-size: 10px;
+}
+
+#content h5{
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+#content img{
+  border-radius: 50%;
+  width: 80%;
+}
+
+#content .playerImage{
+  padding-right: 2px;
+}
+
+#content .playerName{
+  padding-left: 0px;
+}
+
+#content .player{
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+#active{
+  background-color: #e6e6e6;
+}
+
+#content hr{
+  margin-top: 0px;
+}
+
+#content #pos{
+  border-radius: 0px;
+}
+
+#content #filter{
+  border-radius: 40px;
+}
+
+#content .playerImg{
+  width: 78%;
+  border-radius: 0px;
+}
+
+#content .resumeInfo{
+  background-image: url('../img/tom_b.jpeg');
+  background-size: cover;
+  border-radius: 10px 10px 0px 0px;
+  margin: -20px -20px 0px -20px;
+}
+
+#content .resumeInfo h2{
+  padding-top: 10px;
+}
+
+#content .resumeInfo2{
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+
+/** Placeholder Styling **/
+
+::-webkit-input-placeholder {
+  font-size: 13px;
+}
+::-moz-placeholder {
+  font-size: 13px;
+}
+:-ms-input-placeholder {
+  font-size: 13px;
+}
+::placeholder {
+  font-size: 13px;
+}
+
+

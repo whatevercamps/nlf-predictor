@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Juan Felipe Torres & David Bautista"/>
+  <meta name="description" content="Players page including all the info of the players, a resume and the option to add them to an existing template.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  
+  <title>NFL Predictor - Players</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
+  
+  <!-- Link to Bootstrap 4 framework -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+  
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div id="dismiss">
+                <i class="fa fa-arrow-left"></i>
+            </div>
+
+            <div class="sidebar-header">
+                <h3>NFL Predictor</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="#">Players</a>
+                </li>
+                <li>
+                    <a href="#">Templates</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn">
+                        <i class="fa fa-align-left"></i>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </nav>   
+
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-4 playerList">
+                  <form action="">
+                    <div class="row">
+                      <div class="form-group col-md-5">
+                        <input type="text" class="form-control" placeholder="All positions" id="pos" style="font-family: FontAwesome, Nunito Sans">
+                      </div>
+                      <div class="form-group col-md-7">
+                        <input type="text" class="form-control" placeholder="&#xF002;  Filter by name" id="filter" style="font-family: FontAwesome, Nunito Sans">
+                      </div>
+                    </div>
+                  </form>
+                  <div class="row">
+                    <div class="col-lg-9">
+                      <p class="m-1">Name <i class="fa fa-angle-down"></i></p>
+                    </div>
+                    <div class="col-lg-3">
+                      <p class="m-1">Rating <i class="fa fa-angle-down"></i></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row player" id="active">
+                    <div class="col-lg-3 playerImage">
+                      <img src="../img/tom_brady.png" alt="Tom Brady Profile Image">
+                    </div>
+                    <div class="col-lg-5 playerName">
+                      <h5>Tom Brady</h5>
+                      <p>NE - QB</p>
+                    </div>
+                    <div class="col-lg-3 playerInfo">
+                      <h5>350pts</h5>
+                      <p id="season">2019 season</p>
+                    </div>
+                    <div class="col-lg-1 align-self-center">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                  </div>
+                  <div class="row player">
+                    <div class="col-lg-3 playerImage">
+                      <img src="../img/alvin_kamara.png" alt="Alvin Kamara Profile Image">
+                    </div>
+                    <div class="col-lg-5 playerName">
+                      <h5>Alvin Kamara</h5>
+                      <p>NO - RB</p>
+                    </div>
+                    <div class="col-lg-3 playerInfo">
+                      <h5>430pts</h5>
+                      <p id="season">2019 season</p>
+                    </div>
+                    <div class="col-lg-1 align-self-center">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                  </div>
+                  <div class="row player">
+                    <div class="col-lg-3 playerImage">
+                      <img src="../img/adam_thielen.png" alt="Tom Brady Profile Image">
+                    </div>
+                    <div class="col-lg-5 playerName">
+                      <h5>Adam Thielen</h5>
+                      <p>MIN - WR</p>
+                    </div>
+                    <div class="col-lg-3 playerInfo">
+                      <h5>415pts</h5>
+                      <p id="season">2019 season</p>
+                    </div>
+                    <div class="col-lg-1 align-self-center">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                  </div>
+                  <div class="row player">
+                    <div class="col-lg-3 playerImage">
+                      <img src="../img/travis_kelce.png" alt="Tom Brady Profile Image">
+                    </div>
+                    <div class="col-lg-5 playerName">
+                      <h5>Travis Kelce</h5>
+                      <p>KC - TE</p>
+                    </div>
+                    <div class="col-lg-3 playerInfo">
+                      <h5>498pts</h5>
+                      <p id="season">2019 season</p>
+                    </div>
+                    <div class="col-lg-1 align-self-center">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-7 playerResume">
+                  <div class="row resumeInfo">
+                    <div class="col-lg-6">
+                      <img src="../img/tom_brady2.png" alt="Tom Brady Profile Image" class="playerImg">
+                    </div>
+                    <div class="col-lg-6">
+                      <h2 class="text-right font-weight-bold">Tom Brady</h2>
+                      <h6 class="text-right">New England Patriots</h6>
+                      <h2 class="text-right">350.0 pts</h2>
+                      <h6 class="text-right">2019 season</h6>
+                    </div>
+                  </div>
+                  <div class="row resumeInfo2">
+                    <div class="col-lg-2">
+                      <p>Age</p>
+                      <strong>41</strong>
+                    </div>
+                    <div class="col-lg-2">
+                      <p>Height</p>
+                      <strong>1.90 mts</strong>
+                    </div>
+                    <div class="col-lg-2">
+                      <h1>12</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+  
+  <!-- JQuery link -->
+  <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <!-- Popper link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <!-- Bootstrap js link -->
+  <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#dismiss, .overlay').on('click', function () {
+            // hide sidebar
+            $('#sidebar').removeClass('active');
+            // hide overlay
+            $('.overlay').removeClass('active');
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            // open sidebar
+            $('#sidebar').addClass('active');
+            // fade in the overlay
+            $('.overlay').addClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+  </script>
+</body>
+</html>
