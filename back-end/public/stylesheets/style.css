@@ -160,7 +160,7 @@ a[data-toggle="collapse"] {
 
 #content .container .row .playerResume{
   margin-left: 6px;
-  padding: 20px;
+  padding: 20px 20px 5px 20px;
 }
 
 #content p{
@@ -226,11 +226,71 @@ a[data-toggle="collapse"] {
   padding-top: 10px;
 }
 
-#content .resumeInfo2{
+/*#content .resumeInfo2{
   border-radius: 10px;
   background-color: #fff;
+  top: 150px;
+  -webkit-box-shadow: 10px 10px 36px -6px rgba(0,0,0,0.59);
+  -moz-box-shadow: 10px 10px 36px -6px rgba(0,0,0,0.59);
+  box-shadow: 10px 10px 36px -6px rgba(0,0,0,0.59);
 }
 
+#content .resumeInfo2 . div{
+  position: absolute;
+  top: 150px;
+}*/
+
+#content .card{
+  width: 250px;
+  height: 70px;
+  padding: 5px;
+  position: absolute;
+  top: 150px;
+  -webkit-box-shadow: 10px 10px 36px -6px rgba(0,0,0,0.3);
+  -moz-box-shadow: 10px 10px 36px -6px rgba(0,0,0,0.3);
+  box-shadow: 10px 10px 36px -6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+#content .card #number{
+  position: absolute;
+  right: 0px;
+  top: -5px;
+  font-size: 3rem;
+}
+
+#content .card .resumeInfo2{
+  z-index: 2;
+}
+
+#content .starPlot{
+  border-radius: 0px;
+  margin-top: 70px;
+}
+
+#content .infoExtra{
+  margin-top: 70px;
+  padding-left: 0px;
+}
+
+#content .starStats{
+  padding-right: 0px;
+}
+
+#content .infoExtra p,h4{
+  margin-bottom: 0px;
+}
+
+#content .row a{
+  font-family: 'Nunito Sans';
+  color: #ccc;
+  text-decoration: underline;
+  padding-right: 8px;
+}
+
+#content .row a:hover{
+  color: #000;
+}
 
 /** Placeholder Styling **/
 
