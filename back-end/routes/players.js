@@ -1,9 +1,10 @@
 var express = require("express");
 var router = express.Router();
 
+const mu = require("../db/mongoUtils.js");
+
 /* GET users listing. */
 router.get("/", function(req, res) {
-  res.send("respond with a resource players");
-});
+  res.render("players");
 
 module.exports = router;
