@@ -41,6 +41,8 @@ a:focus {
   color: var(--red);
 }
 
+/* PLAYERS PAGE */
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -62,6 +64,10 @@ a:focus {
 
 #sidebar.active {
     left: 0;
+}
+
+#sidebar .activeMenu{
+  color: var(--light-blue);
 }
 
 #dismiss {
@@ -306,5 +312,42 @@ a[data-toggle="collapse"] {
 ::placeholder {
   font-size: 13px;
 }
+
+/* TEMPLATES PAGE */
+
+#content .container .row .benchList, .templatesList, .templateItem{
+  border-radius: 10px;
+  background-color: #F6F6F6;
+}
+
+#content .container .row .benchList{
+  margin-right: 6px;
+  margin-bottom: 10px;
+  padding: 20px 15px 20px 15px;
+  max-height: 250px;
+}
+
+#content .container .row .benchList .col-lg-4, .col-lg-8{
+  padding-bottom: 5px;
+}
+
+#content .container .row .templateItem{
+  margin-left: 6px;
+  padding: 20px 20px 5px 20px;
+}
+
+#content .container .row .templatesList{
+  margin-top: 6px;
+  margin-right: 6px;
+  padding: 20px 15px 20px 15px;
+}
+
+#content .container .row .benchTemp{
+padding-right: 0px;
+}
+
+
+
+
 
 
