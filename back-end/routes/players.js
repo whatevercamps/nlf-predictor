@@ -6,5 +6,5 @@ const mu = require("../db/mongoUtils.js");
 /* GET users listing. */
 router.get("/", function(req, res) {
   res.render("players");
-
+});
 module.exports = router;
