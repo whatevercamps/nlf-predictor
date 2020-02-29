@@ -48,87 +48,103 @@
         <div id="content">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-
                     <button type="button" id="sidebarCollapse" class="btn">
                         <i class="fa fa-align-left"></i>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-align-justify"></i>
-                    </button>
                 </div>
-            </nav>   
-
+            </nav> 
             <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-4 benchTemp">
-                  <div class="row benchList overflow-auto">
-                      <div class="col-lg-8">
+              <div class="row">
+                <div class="col-4">
+                  <div class="benchList">
+                    <div class="benchHeader">
+                      <div class="row">
+                        <div class="col-9">
+                          <h2>Bench</h2>
+                        </div>
+                        <div class="col-3 align-self-end">
+                          <p>Players: 3</p>
+                        </div>  
+                      </div>
+                    </div>
+                    
+                    <div class="playerHeader">
+                      <div class="row">
+                      <div class="col-7">
                         <p class="m-1">Name <i class="fa fa-angle-down"></i></p>
                       </div>
-                      <div class="col-lg-4">
+                      <div class="col-5">
                         <p class="m-1">Rating <i class="fa fa-angle-down"></i></p>
                       </div>
-                    <div class="row player" id="active">
-                      <div class="col-lg-3 playerImage">
-                        <img src="../img/tom_brady.png" alt="Tom Brady Profile Image">
                       </div>
-                      <div class="col-lg-5 playerName">
-                        <h5>Tom Brady</h5>
-                        <p>NE - QB</p>
-                      </div>
-                      <div class="col-lg-3 playerInfo">
-                        <h5>350pts</h5>
-                        <p id="season">2019 season</p>
-                      </div>
-                      <div class="col-lg-1 align-self-center">
-                        <i class="fa fa-ellipsis-v"></i>
+                      <hr>
+                    </div>
+                    <div class="playerL overflow-auto" id="playerL">
+                      <div class="row player">
+                        <div class="col-3 playerImage">
+                          <img src="../img/tom_brady.png" alt="Tom Brady Profile Image">
+                        </div>
+                        <div class="col-5 playerName">
+                          <h5>Tom Brady</h5>
+                          <p>NE - QB</p>
+                        </div>
+                        <div class="col-3 playerInfo">
+                          <h5>350 pts</h5>
+                          <p id="season">2019 season</p>
+                        </div>
+                        <div class="col-1 align-self-center playerExtra">
+                          <a href=""><i class="fa fa-ellipsis-v"></i></a>
+                        </div>
                       </div>
                     </div>
-                    <div class="row player">
-                      <div class="col-lg-3 playerImage">
-                        <img src="../img/alvin_kamara.png" alt="Alvin Kamara Profile Image">
-                      </div>
-                      <div class="col-lg-5 playerName">
-                        <h5>Alvin Kamara</h5>
-                        <p>NO - RB</p>
-                      </div>
-                      <div class="col-lg-3 playerInfo">
-                        <h5>430pts</h5>
-                        <p id="season">2019 season</p>
-                      </div>
-                      <div class="col-lg-1 align-self-center">
-                        <i class="fa fa-ellipsis-v"></i>
+                  </div>
+                  <div class="templatesList">
+                    <div class="templateHeader">
+                      <div class="row">
+                        <div class="col-9">
+                          <h2>Templates</h2>
+                        </div>
+                        <div class="col-3 align-self-end">
+                          <p>Templates: 3</p>
+                        </div>  
                       </div>
                     </div>
-                    <div class="row player">
-                      <div class="col-lg-3 playerImage">
-                        <img src="../img/adam_thielen.png" alt="Tom Brady Profile Image">
+                    <div class="templateHeader">
+                      <div class="row">
+                      <div class="col-8">
+                        <p class="m-1">Name <i class="fa fa-angle-down"></i></p>
                       </div>
-                      <div class="col-lg-5 playerName">
-                        <h5>Adam Thielen</h5>
-                        <p>MIN - WR</p>
+                      <div class="col-4">
+                        <p class="m-1">Created <i class="fa fa-angle-down"></i></p>
                       </div>
-                      <div class="col-lg-3 playerInfo">
-                        <h5>415pts</h5>
-                        <p id="season">2019 season</p>
                       </div>
-                      <div class="col-lg-1 align-self-center">
-                        <i class="fa fa-ellipsis-v"></i>
-                      </div>
-                     </div>
+                      <hr>
                     </div>
-                  <div class="row templatesList">
-                    <h1>My templates</h1>
+                    <div class="templateL overflow-auto" id="templateL">
+                      <div class="row template">
+                        <div class="col-3 playerImage">
+                          <img src="../img/balon.png" alt="Tom Brady Profile Image" class="templateImg">
+                        </div>
+                        <div class="col-6 templateName">
+                          <h5>Mi plantilla 1</h5>
+                          <p>Players: 15</p>
+                        </div>
+                        <div class="col-3 templateInfo align-self-center">
+                          <p id="season">26/02/2020</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="col-7 templateItem">
-                  <h1>Mi plantilla</h1>
+                <div class="col-8">
+                  <div class="templateItem">
+                    <h1>My template</h1>
+                  </div>
                 </div>
               </div>
-            </div>
+            </div>  
         </div>
     </div>
-    <div class="overlay"></div>
   
   <!-- JQuery link -->
   <script

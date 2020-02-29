@@ -26,12 +26,26 @@ const mongoUtils = () => {
 
     return players
       .find({})
+      .limit(10)
       .toArray()
       .finally(() => {
         console.log("cerrando cliente");
         client.close();
       });
   };
+
+  // mu.getPlayers2 = (client, query) => {
+  //   const players = client.db(dbName).collection("players");
+
+  //   return players
+  //     .find(query)
+  //     .limit(10)
+  //     .toArray()
+  //     .finally(() => {
+  //       console.log("cerrando cliente");
+  //       client.close();
+  //     });
+  // };
 
   mu.insertPlayers = (client, players) => {
     const playersHandler = client.db(dbName).collection("players");
@@ -41,11 +55,9 @@ const mongoUtils = () => {
     });
   };
 
-  mu.getUser = client => {
+  mu.getUsers = (client, query) => {
     const UsersCollection = client.db(dbName).collection("users");
-    return UsersCollection.find({
-      _id: ObjectId("5e550faaba0ba27a5ba85ae6")
-    })
+    return UsersCollection.find(query)
       .toArray()
       .finally(() => {
         console.log("cerrando cliente");
@@ -53,26 +65,21 @@ const mongoUtils = () => {
       });
   };
 
-  mu.getUsers = client => {
-    const users = client.db(dbName).collection("users");
-
-    return users.find({}).toArray();
-  };
-
   return mu;
 };
 
-const mu = mongoUtils();
-mu.connect()
-  .catch(err => {
-    throw err;
-  })
-  .then(client => {
-    return mu.getPlayers(client);
-  })
-  .then(players => {
-    console.log("players", players.length);
-  });
+// const mu = mongoUtils();
+// console.log("mu", mu);
+// mu.connect()
+//   .catch(err => {
+//     throw err;
+//   })
+//   .then(client => {
+//     return mu.getPlayers(client);
+//   })
+//   .then(players => {
+//     console.log("players", players.length);
+//   });
 
 // const user = {
 //   name: "juan",

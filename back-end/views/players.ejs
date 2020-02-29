@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   
   <title>NFL Predictor - Players</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="./stylesheets/style.css">
 
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
   
@@ -19,8 +19,7 @@
   <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 </head>
 <body>
-
-    <div class="wrapper">
+       <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div id="dismiss">
@@ -52,12 +51,8 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-
                     <button type="button" id="sidebarCollapse" class="btn">
                         <i class="fa fa-align-left"></i>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-align-justify"></i>
                     </button>
                 </div>
             </nav>   
@@ -65,91 +60,48 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-lg-4 playerList">
-                  <form action="">
+                  <form id="formSearch">
                     <div class="row">
                       <div class="form-group col-md-5">
-                        <input type="text" class="form-control" placeholder="All positions" id="pos" style="font-family: FontAwesome, Nunito Sans">
+                        <input id="pos" type="text" class="form-control" placeholder="Find by position" id="pos" style="font-family: FontAwesome, Nunito Sans">
                       </div>
                       <div class="form-group col-md-7">
                         <input type="text" class="form-control" placeholder="&#xF002;  Filter by name" id="filter" style="font-family: FontAwesome, Nunito Sans">
                       </div>
                     </div>
                   </form>
-                  <div class="row">
-                    <div class="col-lg-9">
+                  <div class="playerHeader">
+                    <div class="row">
+                    <div class="col-7">
                       <p class="m-1">Name <i class="fa fa-angle-down"></i></p>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-5">
                       <p class="m-1">Rating <i class="fa fa-angle-down"></i></p>
+                    </div>
                     </div>
                   </div>
                   <hr>
-
-                  <div class="row player" id="active">
-                    <div class="col-lg-3 playerImage">
-                      <img src="../img/tom_brady.png" alt="Tom Brady Profile Image">
+                  <div class="playerL overflow-auto" id="playerL">
+                <% players.forEach((player) =>{ %>
+                    <div class="row player">
+                      <div class="col-lg-3 playerImage">
+                        <img src="../img/tom_brady.png" alt="Tom Brady Profile Image">
+                      </div>
+                      <div class="col-lg-5 playerName">
+                        <h5><%= player.Name %></h5>
+                        <p><%= player.Team %> - <%= player.Position %></p>
+                      </div>
+                      <div class="col-lg-3 playerInfo">
+                        <h5><%= player.Seasons[0].FantasyPoints %>pts</h5>
+                        <p id="season"><%= player.Seasons[0].Season %> season</p>
+                      </div>
+                      <div class="col-lg-1 align-self-center playerExtra">
+                        <a href=""><i class="fa fa-ellipsis-v justify-content-center"></i></a>
+                      </div>
                     </div>
-                    <div class="col-lg-5 playerName">
-                      <h5>Tom Brady</h5>
-                      <p>NE - QB</p>
-                    </div>
-                    <div class="col-lg-3 playerInfo">
-                      <h5>350pts</h5>
-                      <p id="season">2019 season</p>
-                    </div>
-                    <div class="col-lg-1 align-self-center">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </div>
-                  </div>
-                  <div class="row player">
-                    <div class="col-lg-3 playerImage">
-                      <img src="../img/alvin_kamara.png" alt="Alvin Kamara Profile Image">
-                    </div>
-                    <div class="col-lg-5 playerName">
-                      <h5>Alvin Kamara</h5>
-                      <p>NO - RB</p>
-                    </div>
-                    <div class="col-lg-3 playerInfo">
-                      <h5>430pts</h5>
-                      <p id="season">2019 season</p>
-                    </div>
-                    <div class="col-lg-1 align-self-center">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </div>
-                  </div>
-                  <div class="row player">
-                    <div class="col-lg-3 playerImage">
-                      <img src="../img/adam_thielen.png" alt="Tom Brady Profile Image">
-                    </div>
-                    <div class="col-lg-5 playerName">
-                      <h5>Adam Thielen</h5>
-                      <p>MIN - WR</p>
-                    </div>
-                    <div class="col-lg-3 playerInfo">
-                      <h5>415pts</h5>
-                      <p id="season">2019 season</p>
-                    </div>
-                    <div class="col-lg-1 align-self-center">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </div>
-                  </div>
-                  <div class="row player">
-                    <div class="col-lg-3 playerImage">
-                      <img src="../img/travis_kelce.png" alt="Tom Brady Profile Image">
-                    </div>
-                    <div class="col-lg-5 playerName">
-                      <h5>Travis Kelce</h5>
-                      <p>KC - TE</p>
-                    </div>
-                    <div class="col-lg-3 playerInfo">
-                      <h5>498pts</h5>
-                      <p id="season">2019 season</p>
-                    </div>
-                    <div class="col-lg-1 align-self-center">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </div>
-                  </div>
+                    <% }); %> 
                 </div>
+              </div>
                 <div class="col-lg-7 playerResume">
                   <div class="row resumeInfo">
                     <div class="col-lg-6">
@@ -197,14 +149,15 @@
                   <div class="row justify-content-end">
                     <a href="#" class="text-right">See details</a>
                   </div>
-                </div>
               </div>
-            </div> 
-        </div>
+          </div>
+    </div>
+  </div>
+    <div class="overlay"></div>
     </div>
 
-    <div class="overlay"></div>
   
+  <script src="/javascripts/listPlayers.js"></script>
   <!-- JQuery link -->
   <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -215,6 +168,7 @@
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <!-- jQuery Custom Scroller CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
 
   <script type="text/javascript">
         $(document).ready(function () {
