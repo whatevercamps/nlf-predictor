@@ -1,47 +1,46 @@
-
-:root{
-  --red: #DD1D1F;
+:root {
+  --red: #dd1d1f;
   --dark-blue: #003876;
-  --light-blue: #2DC3ED;
-  --white: #FFFFFF;
-  --gray: #DCC0C0;
+  --light-blue: #2dc3ed;
+  --white: #ffffff;
+  --gray: #dcc0c0;
 }
-       
+
 p {
-    font-family: 'Nunito Sans';
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
+  font-family: "Nunito Sans";
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
 }
 
 a,
 a:hover,
 a:focus {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
 }
 
 .navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
+  padding: 15px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 40px;
 }
 
 .navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
+  box-shadow: none;
+  outline: none !important;
+  border: none;
 }
 
-.navbar i{
+.navbar i {
   color: var(--red);
 }
 
-.wrapper{
+.wrapper {
   display: block;
 }
 
@@ -52,96 +51,96 @@ a:focus {
 ----------------------------------------------------- */
 
 #sidebar {
-  font-family: 'Nunito Sans';
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: -250px;
-    height: 100vh;
-    z-index: 999;
-    background: var(--dark-blue);
-    color: #fff;
-    transition: all 0.3s;
-    overflow-y: scroll;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  font-family: "Nunito Sans";
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  height: 100vh;
+  z-index: 999;
+  background: var(--dark-blue);
+  color: #fff;
+  transition: all 0.3s;
+  overflow-y: scroll;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 #sidebar.active {
-    left: 0;
+  left: 0;
 }
 
-#sidebar .activeMenu{
+#sidebar .activeMenu {
   color: var(--light-blue);
 }
 
 #dismiss {
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    background: var(--dark-blue);
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background: var(--dark-blue);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #dismiss:hover {
-    color: #2DC3ED;
+  color: #2dc3ed;
 }
 
 .overlay {
-    display: none;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 998;
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
 }
 
 .overlay.active {
-    display: block;
-    opacity: 1;
+  display: block;
+  opacity: 1;
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
-    background: var(--dark-blue);
+  padding: 20px;
+  background: var(--dark-blue);
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
+  padding: 20px 0;
 }
 
 #sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
-    color: #ffffff;
-    padding-left: 20px;
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+  color: #ffffff;
+  padding-left: 20px;
 }
 
 #sidebar ul li a:hover {
-    color: var(--light-blue);
-    background: #fff;
-    text-decoration: none;
+  color: var(--light-blue);
+  background: #fff;
+  text-decoration: none;
 }
 
 a[data-toggle="collapse"] {
-    position: relative;
+  position: relative;
 }
 
 .dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
 }
 
 /* ---------------------------------------------------
@@ -149,186 +148,190 @@ a[data-toggle="collapse"] {
 ----------------------------------------------------- */
 
 #content {
-  font-family: 'Nunito Sans';
-    padding: 20px;
-    width: 100%;
-    transition: all 0.3s;
-    top: 0;
-    right: 0;
+  font-family: "Nunito Sans";
+  padding: 20px;
+  width: 100%;
+  transition: all 0.3s;
+  top: 0;
+  right: 0;
 }
 
-#content .container .row .playerList, .playerResume{
+#content .container .row .playerList,
+.playerResume {
   border-radius: 10px;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
 
-#content .container .row .playerList{
+#content .container .row .playerList {
+  height: 90vh;
   margin-right: 6px;
   padding: 20px 0px 10px 0px;
 }
 
-#content .container .row .playerList .playerL{
+#content .container .row .playerList .playerL {
+  height: 75vh;
   padding: 0px 0px 0px 0px;
   margin: 0px;
 }
 
-#content .container .row .playerList .playerL .player:hover{
+#content .container .row .playerList .playerL .player:hover {
   background-color: #ccc;
   cursor: pointer;
 }
 
-#content .container .row .playerList .playerL .player{
+#content .container .row .playerList .playerL .player {
   padding: 10px 10px 0 10px;
   margin: 0px;
 }
 
-#content .playerI{
+#content .playerI {
   border-radius: 50%;
   width: 80%;
 }
 
-#content .container .row .playerList .playerL .player .extraI:hover{
+#content .container .row .playerList .playerL .player .extraI:hover {
   color: #000;
 }
 
-#content .container .row .playerList .playerL .player .playerInfo{
+#content .container .row .playerList .playerL .player .playerInfo {
   padding: 0px;
 }
 
-#content .container .row .playerList hr{
-  margin: 2px 10px 10px 10px;
+#content .container .row .playerList .headerContent hr {
+  margin: 0px 10px 0px 10px;
 }
 
-#content .container .row .playerList .playerHeader{
+#content .container .row .playerList .headerContent .playerHeader {
   padding: 0px 12px 0px 12px;
 }
 
-#content .container .row .playerList .playerHeader .col-4{
+#content .container .row .playerList .headerContent .playerHeader .col-4 {
   padding-left: 0px;
 }
 
-#content .container .row .playerList .playerL .player .playerExtra{
+#content .container .row .playerList .playerL .player .playerExtra {
   padding: 0px 0px 0px 10px;
 }
 
-#content .container .row .playerList form{
+#content .container .row .playerList .headerContent form {
   padding: 0px 12px 0px 12px;
 }
 
-#content .container .row .playerResume{
+#content .container .row .playerResume {
   margin-left: 6px;
   padding: 20px 20px 5px 20px;
-  height: 100%;
+  height: 90vh;
 }
 
-#content .container .row p{
+#content .container .row p {
   font-size: 12px;
 }
 
-#content #season{
+#content #season {
   font-size: 10px;
 }
 
-#content h5{
+#content h5 {
   margin-bottom: 0px;
   font-weight: bold;
 }
 
-#content .playerImage{
+#content .playerImage {
   padding-right: 0px;
   padding-left: 0px;
 }
 
-#content .playerName{
+#content .playerName {
   padding-left: 0px;
 }
 
-#content .player{
+#content .player {
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
-#active{
+#active {
   background-color: #e6e6e6;
 }
 
-#content hr{
+#content hr {
   margin-top: 0px;
 }
 
-#content #pos{
+#content #pos {
   border-radius: 0px;
 }
 
-#content #filter{
+#content #filter {
   border-radius: 40px;
 }
 
-#content .playerImg{
+#content .playerImg {
   width: 78%;
   border-radius: 0px;
 }
 
-#content .resumeInfo{
-  background-image: url('../img/tom_b.jpeg');
+#content .resumeInfo {
+  background-image: url("../img/tom_b.jpeg");
   background-size: cover;
   border-radius: 10px 10px 0px 0px;
   margin: -20px -20px 0px -20px;
 }
 
-#content .resumeInfo h2{
+#content .resumeInfo h2 {
   padding-top: 10px;
 }
 
-#content .card{
+#content .card {
   width: 250px;
   height: 70px;
   padding: 5px;
   position: absolute;
   top: 150px;
-  -webkit-box-shadow: 10px 10px 36px -6px rgba(0,0,0,0.3);
-  -moz-box-shadow: 10px 10px 36px -6px rgba(0,0,0,0.3);
-  box-shadow: 10px 10px 36px -6px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 10px 10px 36px -6px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 10px 10px 36px -6px rgba(0, 0, 0, 0.3);
+  box-shadow: 10px 10px 36px -6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
 
-#content .card #number{
+#content .card #number {
   position: absolute;
   right: 0px;
   top: -5px;
   font-size: 3rem;
 }
 
-#content .card .resumeInfo2{
+#content .card .resumeInfo2 {
   z-index: 2;
 }
 
-#content .starPlot{
+#content .starPlot {
   border-radius: 0px;
   margin-top: 70px;
 }
 
-#content .infoExtra{
+#content .infoExtra {
   margin-top: 70px;
   padding-left: 0px;
 }
 
-#content .starStats{
+#content .starStats {
   padding-right: 0px;
 }
 
-#content .infoExtra p,h4{
+#content .infoExtra p,
+h4 {
   margin-bottom: 0px;
 }
 
-#content .row a{
-  font-family: 'Nunito Sans';
+#content .row a {
+  font-family: "Nunito Sans";
   color: #ccc;
   text-decoration: underline;
   padding-right: 8px;
 }
 
-#content .row a:hover{
+#content .row a:hover {
   color: #000;
 }
 
@@ -349,94 +352,92 @@ a[data-toggle="collapse"] {
 
 /* TEMPLATES PAGE */
 
-.container .row .benchList, .templatesList, .templateItem{
+.container .row .benchList,
+.templatesList,
+.templateItem {
   background-color: #f6f6f6;
   border-radius: 10px;
   padding: 10px;
 }
 
-.container .row .benchList .playerL .playerInfo{
+.container .row .benchList .playerL .playerInfo {
   padding: 0px;
 }
 
-.container .row .benchList{
+.container .row .benchList {
   margin-bottom: 20px;
 }
 
-.container .row .benchList .playerL .playerName{
+.container .row .benchList .playerL .playerName {
   padding: 0px;
 }
 
-.container .row .benchList .playerL .playerExtra{
+.container .row .benchList .playerL .playerExtra {
   padding: 0px;
 }
 
-.container .row .benchList .playerL .player{
+.container .row .benchList .playerL .player {
   margin: 0px;
 }
 
 /* Template */
 
-.container .row .templatesList .templateL .templateInfo{
+.container .row .templatesList .templateL .templateInfo {
   padding: 0px;
 }
 
-.container .row .templatesList .templateHeader .col-3{
+.container .row .templatesList .templateHeader .col-3 {
   padding-left: 0px;
 }
 
-.container .row .templatesList .playerL .templateName{
+.container .row .templatesList .playerL .templateName {
   padding: 0px;
 }
 
-.container .row .templatesList .templateL .templateExtra{
+.container .row .templatesList .templateL .templateExtra {
   padding: 0px;
 }
 
-.container .row .templatesList .templateL .template{
+.container .row .templatesList .templateL .template {
   margin: 0px;
 }
 
-.container .row .templatesList .templateL .template .templateImg{
+.container .row .templatesList .templateL .template .templateImg {
   border-radius: 0;
   width: 80%;
 }
 
-.container .row .templateItem .templatePitch img{
+.container .row .templateItem .templatePitch img {
   height: 100vh;
   width: 70%;
 }
 
-.container .row .templateItem{
+.container .row .templateItem {
   padding: 0px;
 }
 
-.container .row .templateItem .templateHeader{
+.container .row .templateItem .templateHeader {
   padding: 10px 10px 0px 10px;
   background-color: #ccc;
   border-radius: 10px 10px 0px 0px;
 }
 
-.container .row .templateItem .templatePitch{
+.container .row .templateItem .templatePitch {
   padding-bottom: 15px;
   padding-top: 15px;
 }
 
-.container .row .templateItem .templateFooter p, i{
+.container .row .templateItem .templateFooter p,
+i {
   color: #fff;
 }
 
-.container .row .templateItem .templateFooter .row p{
+.container .row .templateItem .templateFooter .row p {
   font-size: 18px;
 }
 
-.container .row .templateItem .templateFooter{
+.container .row .templateItem .templateFooter {
   background-color: var(--light-blue);
   padding: 10px 10px 0px 10px;
   border-radius: 0px 0px 10px 10px;
 }
-
-
-
-
-
