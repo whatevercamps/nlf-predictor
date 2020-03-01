@@ -164,7 +164,7 @@ a[data-toggle="collapse"] {
 
 #content .container .row .playerList{
   margin-right: 6px;
-  padding: 20px 0px 20px 0px;
+  padding: 20px 0px 10px 0px;
 }
 
 #content .container .row .playerList .playerL{
@@ -180,6 +180,11 @@ a[data-toggle="collapse"] {
 #content .container .row .playerList .playerL .player{
   padding: 10px 10px 0 10px;
   margin: 0px;
+}
+
+#content .playerI{
+  border-radius: 50%;
+  width: 80%;
 }
 
 #content .container .row .playerList .playerL .player .extraI:hover{
@@ -216,7 +221,7 @@ a[data-toggle="collapse"] {
   height: 100%;
 }
 
-#content p{
+#content .container .row p{
   font-size: 12px;
 }
 
@@ -227,11 +232,6 @@ a[data-toggle="collapse"] {
 #content h5{
   margin-bottom: 0px;
   font-weight: bold;
-}
-
-#content .container img{
-  border-radius: 50%;
-  width: 80%;
 }
 
 #content .playerImage{
@@ -399,8 +399,42 @@ a[data-toggle="collapse"] {
 
 .container .row .templatesList .templateL .template .templateImg{
   border-radius: 0;
+  width: 80%;
 }
 
+.container .row .templateItem .templatePitch img{
+  height: 100vh;
+  width: 70%;
+}
+
+.container .row .templateItem{
+  padding: 0px;
+}
+
+.container .row .templateItem .templateHeader{
+  padding: 10px 10px 0px 10px;
+  background-color: #ccc;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.container .row .templateItem .templatePitch{
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.container .row .templateItem .templateFooter p, i{
+  color: #fff;
+}
+
+.container .row .templateItem .templateFooter .row p{
+  font-size: 18px;
+}
+
+.container .row .templateItem .templateFooter{
+  background-color: var(--light-blue);
+  padding: 10px 10px 0px 10px;
+  border-radius: 0px 0px 10px 10px;
+}
 
 
 
