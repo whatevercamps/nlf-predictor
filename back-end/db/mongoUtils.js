@@ -75,17 +75,17 @@ mu.connect()
   });
 
 // const user = {
-//   name: "juan",
+//   name: 'juan',
 //   templates: [
 //     {
 //       date: Date.now(),
-//       name: "pa ganar",
+//       name: 'pa ganar',
 //       positions: {
 //         qb: [],
 //         rb: [],
 //         wr: [],
 //         te: [],
-//         "w/r": [],
+//         'w/r': [],
 //         k: [],
 //         def: [],
 //         bn: []
@@ -97,10 +97,10 @@ mu.connect()
 // mu.connect().then(client => {
 //   client
 //     .db(process.env.dbName)
-//     .collection("users")
+//     .collection('users')
 //     .insertOne(user, (err, resp) => {
 //       if (err) throw err;
-//       console.log("respuesta", resp);
+//       console.log('respuesta', resp);
 //       client.close();
 //     });
 // });
