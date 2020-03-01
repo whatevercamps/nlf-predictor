@@ -26,7 +26,6 @@ const mongoUtils = () => {
 
     return players
       .find({})
-      .limit(10)
       .toArray()
       .finally(() => {
         console.log("cerrando cliente");
