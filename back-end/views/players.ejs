@@ -80,14 +80,11 @@
                 <form id="formSearch">
                   <div class="row">
                     <div class="form-group col-md-5">
-                      <input
-                        id="pos"
-                        type="text"
-                        class="form-control"
-                        placeholder="Find by position"
-                        id="pos"
-                        style="font-family: FontAwesome, Nunito Sans"
-                      />
+                      <select class="form-control" id="positionSelector">
+                        <% ["QB", "RB", "DST", "WR", "TE", "K"].forEach((pos)=>{ %>
+                        <option value=<%= pos %> <% if(positionSelected && positionSelected == pos) { %> selected <% } %> ><%= pos %></option>
+                        <% }); %>
+                      </select>
                     </div>
                     <div class="form-group col-md-7">
                       <input

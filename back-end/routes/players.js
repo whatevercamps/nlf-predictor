@@ -6,9 +6,27 @@ const mu = mongoUtils();
 
 /* GET users listing. */
 router.get("/", function(req, res) {
+  console.log("queryparams", req.query);
+  let query = {};
+  let renderBody = { positionSelected: false };
+  if (req.query["pos"]) {
+    let pos = req.query["pos"].toUpperCase();
+
+    let positions = ["QB", "RB", "DST", "WR", "TE", "K"];
+
+    if (positions.includes(pos)) {
+      query["Position"] = pos;
+      renderBody["positionSelected"] = pos;
+    }
+  }
+
   mu.connect()
-    .then(mu.getPlayers).then(players => {
-      res.render("players", {"players": players});
+    .then(client => mu.getPlayers(client, query))
+    .then(players => {
+      if (req.query["mode"] && req.query["mode"].toLowerCase() == "json")
+        res.json(players);
+      else
+        res.render("players", ((renderBody["players"] = players), renderBody));
     });
 });
 
@@ -27,6 +45,7 @@ router.get("/", function(req, res) {
 // Data endpoint //
 router.get("/playersE", (req, res) => {
   mu.connect()
-    .then(mu.getPlayers).then(players => res.json(players));
+    .then(mu.getPlayers)
+    .then(players => res.json(players));
 });
 module.exports = router;
