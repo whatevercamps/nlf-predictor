@@ -5,7 +5,7 @@ const positionSelector = document.querySelector("#positionSelector");
 positionSelector.addEventListener("change", evt => {
   if (evt.target.value) {
     const playersUl = document.querySelector("#playerL");
-    playersUl.innerHTML = "cargando jugadores";
+    playersUl.innerHTML = "Querying players";
     fetch(`/players?pos=${evt.target.value.toString()}&mode=json`)
       .then(res => res.json())
       .then(showPlayers);
@@ -49,10 +49,22 @@ const showPlayers = players => {
 };
 
 const onSearch = evt => {
-  const query = document.querySelector("#formSearch #pos").value;
-  fetch(`/players/${query}`)
+  const query = document.querySelector("#formSearch #form-player-name").value;
+  console.log("uuuh me tocaron", query);
+
+  const playersUl = document.querySelector("#playerL");
+  playersUl.innerHTML = " Searching player";
+  let queryParam = query.toString().trim();
+  console.log("param", queryParam);
+  queryParam = queryParam.replace(new RegExp("[\\s]+"), "_");
+  console.log("params", queryParam);
+  fetch(`/players?playerName=${queryParam}&mode=json`)
     .then(res => res.json())
-    .then(showPlayers);
+    .then(players => {
+      if (!players || !players.length)
+        playersUl.innerHTML = " Player not found :(";
+      else showPlayers(players);
+    });
 
   evt.preventDefault();
 };

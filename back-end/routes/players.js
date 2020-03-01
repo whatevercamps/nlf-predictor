@@ -18,7 +18,7 @@ router.get("/", function(req, res) {
       query["Position"] = pos;
       renderBody["positionSelected"] = pos;
     }
-  }
+  } else if (req.query["playerName"]) query["Name"] = new RegExp(`.*${req.query["playerName"].split("_").join(".*")}.*`, "i");
 
   mu.connect()
     .then(client => mu.getPlayers(client, query))
