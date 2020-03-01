@@ -21,11 +21,11 @@ const mongoUtils = () => {
     return client.connect();
   };
 
-  mu.getPlayers = client => {
+  mu.getPlayers = (client, query) => {
     const players = client.db(dbName).collection("players");
 
     return players
-      .find({})
+      .find(query)
       .limit(10)
       .toArray()
       .finally(() => {
@@ -34,18 +34,18 @@ const mongoUtils = () => {
       });
   };
 
-  // mu.getPlayers2 = (client, query) => {
-  //   const players = client.db(dbName).collection("players");
+  mu.getPlayers2 = (client, query) => {
+    const players = client.db(dbName).collection("players");
 
-  //   return players
-  //     .find(query)
-  //     .limit(10)
-  //     .toArray()
-  //     .finally(() => {
-  //       console.log("cerrando cliente");
-  //       client.close();
-  //     });
-  // };
+    return players
+      .find(query)
+      .limit(10)
+      .toArray()
+      .finally(() => {
+        console.log("cerrando cliente");
+        client.close();
+      });
+  };
 
   mu.insertPlayers = (client, players) => {
     const playersHandler = client.db(dbName).collection("players");
