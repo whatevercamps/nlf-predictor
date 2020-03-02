@@ -553,11 +553,24 @@ i {
     FLOATING DIV TEMPLATE STYLE
 ----------------------------------------------------- */
 
-.floating-template {
+#floating-template {
   position: fixed;
   bottom: 0;
   right: 0;
   width: 30vw;
   height: 40px;
-  background-color: aqua;
+  background-color: var(--red);
+  color: #fff;
+  border-radius: 10px 10px 0px 0px;
+  padding: 8px;
+
+}
+
+#floating-template a{
+  position: absolute;
+  right: 0;
+}
+
+#floating-template i{
+  padding-right: 10px;
 }

@@ -20,4 +20,6 @@ The application runs an Express Server listening on port 5000. The data is on a 
  ```
 # Overview
 
+![Nfl predictor](https://i.imgur.com/WDmqu8H.png)
+
 Made by [Juan Felipe Torres](https://github.com/jftorresp) and [David Bautista](https://github.com/whatevercamps), licenced under MIT

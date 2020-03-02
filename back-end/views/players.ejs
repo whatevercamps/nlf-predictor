@@ -238,8 +238,22 @@
             </div>
           </div>
 
-          <div class="floating-template">
-            holiiii
+          <div id="floating-template">
+            <div class="row">
+              <div class="col-6">
+                Players selected
+              </div>
+              <div class="col-6 justify-content-end">
+                <a href="#" id="goUp" onclick="goUp()"><i class="fa fa-chevron-up"></i></a>
+              </div>
+            </div>
+            <div>
+              <ul>
+              <% players.forEach((player) =>{ %>
+                <li><%= player.Name %> added</li>
+              <% }); %>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -275,7 +289,6 @@
         var playerListColReference = $("#playerL");
         var playerListHeaderReference = $(".headerContent");
 
-
         var referenceCurrentHeight = playerResumeReference.innerHeight();
         var headerHeight = playerListHeaderReference.innerHeight();
 
@@ -302,10 +315,13 @@
           $(".collapse.in").toggleClass("in");
           $("a[aria-expanded=true]").attr("aria-expanded", "false");
         });
-
-
-
       });
+    </script>
+    <script>
+        function goUp(){
+          document.getElementById('floating-template').style.height = '200px';
+          const playerDiv = document.createElement("div");
+        }
     </script>
   </body>
 </html>
