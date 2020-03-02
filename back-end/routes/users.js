@@ -13,6 +13,28 @@ router.get("/register", function(req, res) {
   res.render("registerForm");
 });
 
+// Register
+router.post('/register', (req, res, next) => {
+  const newUser = {
+    email: req.body.email,
+    password: req.body.password
+  };
+
+  User.addUser(newUser, (err, user) => {
+    if (err) {
+      res.json({
+        success: false,
+        msg: 'Fallo al registrar usuario'
+      });
+    } else {
+      res.json({
+        success: true,
+        msg: 'Usuario registrado'
+      });
+    }
+  });
+});
+
 // passport/login.js
 // passport.use('login', new LocalStrategy({
 //   passReqToCallback : true
