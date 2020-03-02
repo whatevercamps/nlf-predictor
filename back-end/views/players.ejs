@@ -91,9 +91,11 @@
                         type="text"
                         class="form-control"
                         placeholder="&#xF002;  Filter by name"
-                        id="filter"
+                        id="form-player-name"
                         style="font-family: FontAwesome, Nunito Sans"
                       />
+                      <small id="emailHelp" class="form-text text-muted" style="visibility: hidden;">Press Enter to search</small>
+
                     </div>
                   </div>
                 </form>
@@ -222,11 +224,16 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
+
         var playerResumeReference = $(".playerResume");
         var playerListColReference = $("#playerL");
+        var playerListHeaderReference = $(".headerContent");
+
         var referenceCurrentHeight = playerResumeReference.innerHeight();
+        var headerHeight = playerListHeaderReference.innerHeight();
+
         playerListColReference.innerHeight(
-          referenceCurrentHeight ? referenceCurrentHeight - 105 : 600
+          referenceCurrentHeight ? referenceCurrentHeight -  headerHeight - 20 : 600
         );
 
         $("#sidebar").mCustomScrollbar({
