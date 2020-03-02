@@ -42,8 +42,12 @@ players.forEach(player =>
     playerResumeYDS.innerHTML = player.dataset.playerresumeyds;
     playerResumeINT.innerHTML = player.dataset.playerresumeint;
     playerResumePTS.innerHTML = player.dataset.playerresumepts;
+    
+    const link = `/players/detail/${player.dataset.playerresumeid}`;
 
-    playerResumeId.innerHTML = player.dataset.playerresumeid;
+    console.log("link", link);
+    
+    playerResumeId.innerHTML = `<a href="${link}" class="text-right">See details</a>`;
   })
 );
 

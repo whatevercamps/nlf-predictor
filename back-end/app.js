@@ -6,7 +6,6 @@ var logger = require("morgan");
 var passport = require('passport');
 var expressSession = require('express-session');
 
-var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var playersRouter = require("./routes/players");
 var templatesRouter = require("./routes/templates");
@@ -27,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use("/", indexRouter);
+app.use("/", playersRouter);
 app.use("/users", usersRouter);
 app.use("/players", playersRouter);
 app.use("/templates", templatesRouter);

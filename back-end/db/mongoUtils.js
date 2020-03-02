@@ -83,8 +83,16 @@ const mongoUtils = () => {
       client.close();
     });
   };
+
+  mu.insertTemplates = (client, template) =>{
+    const templates = client.db(dbName).collection("templates");
+    return templates.insertOne(template).finally(() => client.close());
+  };
+  
   return mu;
 };
+
+
 
 // const mu = mongoUtils();
 // console.log("mu", mu);
