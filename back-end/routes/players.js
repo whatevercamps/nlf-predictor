@@ -18,7 +18,12 @@ router.get("/", function(req, res) {
       query["Position"] = pos;
       renderBody["positionSelected"] = pos;
     }
-  } else if (req.query["playerName"]) query["Name"] = new RegExp(`.*${req.query["playerName"].split("_").join(".*")}.*`, "i");
+  }
+  if (req.query["playerName"])
+    query["Name"] = new RegExp(
+      `.*${req.query["playerName"].split("_").join(".*")}.*`,
+      "i"
+    );
   let page = 1;
   if (req.query["page"] && !isNaN(+req.query["page"])) {
     page = req.query["page"];
@@ -64,8 +69,8 @@ router.get("/detail/:id", function(req, res) {
       return player;
     })
     .then(player => {
-      res.render("playerDetail", {"player": player})
-    })
+      res.render("playerDetail", { player: player });
+    });
 });
 
 router.get("/:id", function(req, res) {
@@ -76,8 +81,8 @@ router.get("/:id", function(req, res) {
       return player;
     })
     .then(player => {
-      res.render("playerResume", {"player": player})
-    })
+      res.render("playerResume", { player: player });
+    });
 });
 
 // router.get("/players2", function(req, res) {

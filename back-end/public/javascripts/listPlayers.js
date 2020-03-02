@@ -2,15 +2,46 @@ const formSearch = document.querySelector("#formSearch");
 
 const positionSelector = document.querySelector("#positionSelector");
 
+const paginsSenders = document.querySelectorAll(".page-item");
+
+let currentPos = null;
+let currentPlayerName = null;
+let currentPage = 1;
+
+const getPlayersJSON = (currentPlayerName, currentPos, currentPage) => {
+  return fetch(
+    `/players?mode=json${
+      currentPlayerName ? `&playerName=${currentPlayerName}` : ""
+    }${currentPos ? `&pos=${currentPos}` : ""}${
+      currentPage ? `&page=${currentPage}` : ""
+    }`
+  );
+};
+
 positionSelector.addEventListener("change", evt => {
   if (evt.target.value) {
     const playersUl = document.querySelector("#playerL");
     playersUl.innerHTML = "Querying players";
-    fetch(`/players?pos=${evt.target.value.toString()}&mode=json`)
+    currentPos = evt.target.value.toString();
+    currentPage = 1;
+    getPlayersJSON(currentPlayerName, currentPos, currentPage)
       .then(res => res.json())
       .then(showPlayers);
   }
 });
+
+console.log("pagins", paginsSenders);
+
+paginsSenders.forEach(paginSender =>
+  paginSender.addEventListener("click", () => {
+    currentPage = +paginSender.dataset.index;
+    const playersUl = document.querySelector("#playerL");
+    playersUl.innerHTML = "Querying players";
+    getPlayersJSON(currentPlayerName, currentPos, currentPage)
+      .then(res => res.json())
+      .then(showPlayers);
+  })
+);
 
 const showPlayers = data => {
   let players = data["players"];
@@ -59,7 +90,9 @@ const onSearch = evt => {
   console.log("param", queryParam);
   queryParam = queryParam.replace(new RegExp("[\\s]+"), "_");
   console.log("params", queryParam);
-  fetch(`/players?playerName=${queryParam}&mode=json`)
+  currentPlayerName = queryParam;
+  currentPage = 1;
+  getPlayersJSON(currentPlayerName, currentPos, currentPage)
     .then(res => res.json())
     .then(data => {
       let players = data["players"];
