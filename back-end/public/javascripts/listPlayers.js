@@ -8,6 +8,34 @@ let currentPos = null;
 let currentPlayerName = null;
 let currentPage = 1;
 
+const updatePagination = count => {
+  let pagination = document.querySelector("#pagination");
+  pagination.innerHTML = "";
+  let top = Math.min(currentPage + 2, Math.ceil(count / 20));
+  let bottom = Math.max(1, currentPage - 1);
+  console.log({
+    currentPage: currentPage,
+    count: count,
+    bottom: bottom,
+    top: top
+  });
+  for (var i = bottom; i <= top; i++) {
+    const pagin = document.createElement("li");
+    pagin.className = "page-item";
+    pagin.dataset.index = i;
+    pagin.innerHTML = `<a class="page-link"> ${i} </a>`;
+    pagin.addEventListener("click", () => {
+      currentPage = i;
+      const playersUl = document.querySelector("#playerL");
+      playersUl.innerHTML = "Querying players";
+      getPlayersJSON(currentPlayerName, currentPos, currentPage)
+        .then(res => res.json())
+        .then(showPlayers);
+    });
+    pagination.appendChild(pagin);
+  }
+};
+
 const getPlayersJSON = (currentPlayerName, currentPos, currentPage) => {
   return fetch(
     `/players?mode=json${
@@ -30,8 +58,6 @@ positionSelector.addEventListener("change", evt => {
   }
 });
 
-console.log("pagins", paginsSenders);
-
 paginsSenders.forEach(paginSender =>
   paginSender.addEventListener("click", () => {
     currentPage = +paginSender.dataset.index;
@@ -46,8 +72,6 @@ paginsSenders.forEach(paginSender =>
 const showPlayers = data => {
   let players = data["players"];
   const playersUl = document.querySelector("#playerL");
-
-  console.log("padre", playersUl);
 
   playersUl.innerHTML = "";
 
@@ -78,6 +102,8 @@ const showPlayers = data => {
 
     playersUl.appendChild(playerDiv);
   });
+
+  updatePagination(data["count"]);
 };
 
 const onSearch = evt => {
