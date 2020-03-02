@@ -299,7 +299,7 @@ a[data-toggle="collapse"] {
   border-radius: 10px;
 }
 
-#content .card #number {
+#content .card #player-resume-number {
   position: absolute;
   right: 0px;
   top: -5px;

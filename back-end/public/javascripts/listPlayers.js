@@ -4,9 +4,44 @@ const positionSelector = document.querySelector("#positionSelector");
 
 const paginsSenders = document.querySelectorAll(".page-item");
 
+const players = document.querySelectorAll(".player");
+
+//Player editable datafields
+let playerResumeName = document.querySelector("#player-resume-name");
+let playerResumeTeam = document.querySelector("#player-resume-team");
+let playerResumePoints = document.querySelector("#player-resume-points");
+let playerResumeSeason = document.querySelector("#player-resume-season");
+
+// let playerResumeNumber = document.querySelector("#player-resume-number");
+let playerResumePlayed = document.querySelector("#player-resume-played");
+let playerResumePosition = document.querySelector("#player-resume-position");
+
+let playerResumeCMP = document.querySelector("#player-resume-cmp");
+let playerResumeYDS = document.querySelector("#player-resume-yds");
+let playerResumeINT = document.querySelector("#player-resume-int");
+let playerResumePTS = document.querySelector("#player-resume-pts");
+
 let currentPos = null;
 let currentPlayerName = null;
 let currentPage = 1;
+
+players.forEach(player =>
+  player.addEventListener("click", () => {
+    console.log("name", player.dataset);
+    playerResumeName.innerHTML = player.dataset.playerresumename;
+    playerResumeTeam.innerHTML = player.dataset.playerresumeteam;
+    playerResumePoints.innerHTML = player.dataset.playerresumepoints;
+    playerResumeSeason.innerHTML = player.dataset.playerresumeseason;
+
+    playerResumePlayed.innerHTML = player.dataset.playerresumeplayed;
+    playerResumePosition.innerHTML = player.dataset.playerresumeposition;
+
+    playerResumeCMP.innerHTML = player.dataset.playerresumecmp;
+    playerResumeYDS.innerHTML = player.dataset.playerresumeyds;
+    playerResumeINT.innerHTML = player.dataset.playerresumeint;
+    playerResumePTS.innerHTML = player.dataset.playerresumepts;
+  })
+);
 
 const updatePagination = count => {
   let pagination = document.querySelector("#pagination");
@@ -51,6 +86,9 @@ positionSelector.addEventListener("change", evt => {
     const playersUl = document.querySelector("#playerL");
     playersUl.innerHTML = "Querying players";
     currentPos = evt.target.value.toString();
+    console.log("prev currentPos", currentPos);
+    currentPos =
+      currentPos == "All positions" ? null : currentPos.split(" ")[0];
     currentPage = 1;
     getPlayersJSON(currentPlayerName, currentPos, currentPage)
       .then(res => res.json())
@@ -78,6 +116,20 @@ const showPlayers = data => {
   players.forEach(player => {
     const playerDiv = document.createElement("div");
     playerDiv.className = "row player";
+
+    playerDiv.dataset.playerresumename = player.Name;
+    playerDiv.dataset.playerresumeteam = player.Team;
+    playerDiv.dataset.playerresumepoints = player.Seasons[0].FantasyPoints;
+    playerDiv.dataset.playerresumeseason = player.Seasons[0].Season;
+
+    playerDiv.dataset.playerresumeplayed = player.Seasons[0].Played;
+    playerDiv.dataset.playerresumeposition = player.Position;
+
+    playerDiv.dataset.playerresumecmp = player.Seasons[0].PassingCompletions;
+    playerDiv.dataset.playerresumeyds = player.Seasons[0].PassingYards;
+    playerDiv.dataset.playerresumeint = player.Seasons[0].Interceptions;
+    playerDiv.dataset.playerresumepts = player.Seasons[0].FantasyPoints;
+
     playerDiv.innerHTML = `
     <div class="col-lg-3 playerImage">
       <img
@@ -99,6 +151,22 @@ const showPlayers = data => {
         ><i class="fa fa-ellipsis-v justify-content-center"></i
       ></a>
     </div>`;
+
+    playerDiv.addEventListener("click", () => {
+      console.log("name", playerDiv.dataset);
+      playerResumeName.innerHTML = playerDiv.dataset.playerresumename;
+      playerResumeTeam.innerHTML = playerDiv.dataset.playerresumeteam;
+      playerResumePoints.innerHTML = playerDiv.dataset.playerresumepoints;
+      playerResumeSeason.innerHTML = playerDiv.dataset.playerresumeseason;
+
+      playerResumePlayed.innerHTML = playerDiv.dataset.playerresumeplayed;
+      playerResumePosition.innerHTML = playerDiv.dataset.playerresumeposition;
+
+      playerResumeCMP.innerHTML = playerDiv.dataset.playerresumecmp;
+      playerResumeYDS.innerHTML = playerDiv.dataset.playerresumeyds;
+      playerResumeINT.innerHTML = playerDiv.dataset.playerresumeint;
+      playerResumePTS.innerHTML = playerDiv.dataset.playerresumepts;
+    });
 
     playersUl.appendChild(playerDiv);
   });

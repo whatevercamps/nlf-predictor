@@ -101,8 +101,8 @@
                   <div class="row">
                     <div class="form-group col-md-5">
                       <select class="form-control" id="positionSelector">
-                        <% ["QB", "RB", "DST", "WR", "TE", "K"].forEach((pos)=>{ %>
-                        <option value=<%= pos %> <% if(positionSelected && positionSelected == pos) { %> selected <% } %> ><%= pos %></option>
+                        <% ["All positions", "QB position", "RB position", "DST position", "WR position", "TE position", "K position"].forEach((pos)=>{ %>
+                        <option value="<%= pos %>" <% if(positionSelected && positionSelected == pos) { %> selected <% } %> ><%= pos %></option>
                         <% }); %>
                       </select>
                     </div>
@@ -133,7 +133,19 @@
               </div>
               <div class="playerL overflow-auto" id="playerL">
                 <% players.forEach((player) =>{ %>
-                <div class="row player">
+                <div 
+                class="row player" 
+                data-playerresumename=<%= player.Name %>
+                data-playerresumeteam=<%= player.Team %>
+                data-playerresumepoints=<%= player.Seasons[0].FantasyPoints %>
+                data-playerresumeseason=<%= player.Seasons[0].Season %>
+                data-playerresumeplayed=<%= player.Seasons[0].Played %>
+                data-playerresumeposition=<%= player.Position %>
+                data-playerresumecmp=<%= player.Seasons[0].PassingCompletions %>
+                data-playerresumeyds=<%= player.Seasons[0].PassingYards %>
+                data-playerresumeint=<%= player.Seasons[0].Interceptions %>
+                data-playerresumepts=<%= player.Seasons[0].FantasyPoints %>
+                >
                   <div class="col-3 playerImage">
                     <img
                       src="../img/tom_brady.png"
@@ -159,7 +171,60 @@
               </div>
             </div>
             <div class="col-lg-7 playerResume">
-              <%- include("./playerResume.ejs", {player: player}) %>
+              <div class="row resumeInfo">
+                <div class="col-lg-6">
+                  <img
+                    src="../img/tom_brady2.png"
+                    alt="Tom Brady Profile Image"
+                    class="playerImg"
+                  />
+                </div>
+                <div class="col-lg-6">
+                  <h2 id="player-resume-name" class="text-right font-weight-bold"><%= players[0].Name %></h2>
+                  <h6 id="player-resume-team" class="text-right"><%= players[0].Team %></h6>
+                  <h2 id="player-resume-points" class="text-right"><%= players[0].Seasons[0].FantasyPoints %> pts</h2>
+                  <h6 id="player-resume-season"class="text-right"><%= players[0].Seasons[0].Season %> season</h6>
+                </div>
+              </div>
+              <div class="card">
+                <span id="player-resume-number">12</span>
+                <div class="row resumeInfo2">
+                  <div class="col-lg-6">
+                    <p>Played</p>
+                    <strong id="player-resume-played"><%= players[0].Seasons[0].Played %></strong>
+                  </div>
+                  <div class="col-lg-6">
+                    <p>Position</p>
+                    <strong id="player-resume-position"><%= players[0].Position %></strong>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 starStats">
+                  <img
+                    src="../img/star_plot.png"
+                    alt="Star Plot Statistics"
+                    class="starPlot"
+                  />
+                </div>
+                <div class="col-md-4 infoExtra">
+                  <p>CMP</p>
+                  <hr />
+                  <h4 id="player-resume-cmp"><%= players[0].Seasons[0].PassingCompletions %></h4>
+                  <p>PASS YDS</p>
+                  <hr />
+                  <h4 id="player-resume-yds"><%= players[0].Seasons[0].PassingYards %></h4>
+                  <p>INT</p>
+                  <hr />
+                  <h4 id="player-resume-int"><%= players[0].Seasons[0].Interceptions %></h4>
+                  <p>PTS</p>
+                  <hr />
+                  <h4 id="player-resume-pts"><%= players[0].Seasons[0].FantasyPoints %> pts</h4>
+                </div>
+              </div>
+              <div class="row justify-content-end">
+                <a href="" class="text-right">See details</a>
+              </div>
             </div>
           </div>
         </div>
@@ -196,6 +261,7 @@
         var playerListColReference = $("#playerL");
         var playerListHeaderReference = $(".headerContent");
 
+
         var referenceCurrentHeight = playerResumeReference.innerHeight();
         var headerHeight = playerListHeaderReference.innerHeight();
 
@@ -222,6 +288,9 @@
           $(".collapse.in").toggleClass("in");
           $("a[aria-expanded=true]").attr("aria-expanded", "false");
         });
+
+
+
       });
     </script>
   </body>
