@@ -44,7 +44,7 @@ const mongoUtils = () => {
     });
   };
 
-  mu.getPlayers2 = (client) => {
+  mu.getPlayers2 = client => {
     const players = client.db(dbName).collection("players");
 
     console.log("players", players);
@@ -56,6 +56,14 @@ const mongoUtils = () => {
         console.log("cerrando cliente");
         client.close();
       });
+  };
+
+  mu.insertUsers = (client, users) => {
+    const playersHandler = client.db(dbName).collection("users");
+    playersHandler.insert(users).finally(() => {
+      console.log("Users inserted");
+      client.close();
+    });
   };
 
   mu.insertPlayers = (client, players) => {
@@ -84,15 +92,13 @@ const mongoUtils = () => {
     });
   };
 
-  mu.insertTemplates = (client, template) =>{
+  mu.insertTemplates = (client, template) => {
     const templates = client.db(dbName).collection("templates");
     return templates.insertOne(template).finally(() => client.close());
   };
 
   return mu;
 };
-
-
 
 // const mu = mongoUtils();
 // console.log("mu", mu);

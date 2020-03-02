@@ -1,8 +1,17 @@
 var express = require("express");
-var passport = require("passport");
+// var passport = require("passport");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 var router = express.Router();
 const mongoUtils = require("../db/mongoUtils.js");
 const mu = mongoUtils();
+
+const comparePasswords = (candidatePassword, hash, callback) => {
+  bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+    if (err) throw err;
+    callback(null, isMatch);
+  });
+};
 
 /* GET users listing. */
 router.get("/login", function(req, res) {
@@ -13,56 +22,83 @@ router.get("/register", function(req, res) {
   res.render("registerForm");
 });
 
-// Register
-router.post('/register', (req, res, next) => {
-  const newUser = {
-    email: req.body.email,
-    password: req.body.password
-  };
+router.post("/auth", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  mu.connect()
+    .then(client => mu.getUsers(client, { email: email }))
+    .then(user => {
+      if (!user) {
+        return res.json({
+          success: false,
+          msg: "wrong user"
+        });
+      }
 
-  User.addUser(newUser, (err, user) => {
-    if (err) {
-      res.json({
-        success: false,
-        msg: 'Fallo al registrar usuario'
+      comparePasswords(password, user.password, (err, isMatch) => {
+        if (err) throw err;
+        if (isMatch) {
+          const token = jwt.sign(user.toJSON(), process.env.secret, {
+            expiresIn: 1200 //20 minutos
+          });
+
+          res.json({
+            success: true,
+            token: "JWT " + token
+          });
+        } else {
+          return res.json({
+            success: false,
+            msg: "Wrong passport"
+          });
+        }
       });
-    } else {
-      res.json({
-        success: true,
-        msg: 'Usuario registrado'
-      });
-    }
-  });
+    });
 });
 
-// passport/login.js
-// passport.use('login', new LocalStrategy({
-//   passReqToCallback : true
-// },
-// function(req, username, password, done) { 
-//   // check in mongo if a user with username exists or not
-//   User.findOne({ 'username' :  username }, 
-//     function(err, user) {
-//       // In case of any error, return using the done method
-//       if (err)
-//         return done(err);
-//       // Username does not exist, log error & redirect back
-//       if (!user){
-//         console.log('User Not Found with username '+username);
-//         return done(null, false, 
-//               req.flash('message', 'User Not found.'));                 
-//       }
-//       // User exists but wrong password, log the error 
-//       if (!isValidPassword(user, password)){
-//         console.log('Invalid Password');
-//         return done(null, false, 
-//             req.flash('message', 'Invalid Password'));
-//       }
-//       // User and password both match, return user from 
-//       // done method which will be treated like success
-//       return done(null, user);
-//     }
-//   );
-// }));
+/* 
+  bcrypt
+    .genSalt(10)
+    .then(salt => bcrypt.hash(newUser.password, salt))
+    .then(hash => {
+      newUser.password = hash;
+      mu.connect(client =>
+        mu.insertUsers(client, ((newUser.password = hash), newUser))
+      );
+    });
+*/
+
+router.post("/adduser", (req, res) => {
+  let newUser = {
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    templates: []
+  };
+  // res.json({ hash: "holiii" });
+  bcrypt
+    .genSalt(10)
+    .then(salt => bcrypt.hash(newUser.password, salt))
+    .then(hash => {
+      newUser.password = hash;
+      return mu
+        .connect()
+        .then(client => mu.insertUsers(client, newUser))
+        .then(resp => {
+          res.json({
+            success: true,
+            msg: "User registered",
+            data: resp
+          });
+        });
+    })
+    .catch(err => {
+      res.json({
+        success: false,
+        msg: "Failure registering user",
+        error: err
+      });
+    });
+});
 
 module.exports = router;

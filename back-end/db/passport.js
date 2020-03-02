@@ -1,26 +1,22 @@
-const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
+const JwtStrategy = require("passport-jwt").Strategy;
+const ExtractJwt = require("passport-jwt").ExtractJwt;
 const mongoUtils = require("../db/mongoUtils.js");
-const mu = mongoUtils();
+const dotenv = require("dotenv");
 
-module.exports = function(passport){
+const mu = mongoUtils();
+dotenv.config();
+
+module.exports = function(passport) {
   let opts = {};
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
-	opts.secretOrKey = config.secret;
-    passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-        mu.connect()
-        .then((client,query) => mu.getUsers(client, query))
-        .then(user => )
-        
-        User.getUserbYiD(jwt_payload._id, (err, user) => {
-            if(err){
-                return done(err, false);
-            }
-            if(user){
-                return done(null, user);
-            }else{
-                return done(null, false); 
-            }
-        });
-    }));
-}
+  opts.secretOrKey = process.env.secret || "defaultsecret";
+  passport.use(
+    new JwtStrategy(opts, (jwt_payload, done) => {
+      console.log("payload", jwt_payload);
+      mu.connect()
+        .then((client, query) => mu.getUsers(client, query))
+        .then(user => done(null, user))
+        .catch(err => done(err, false));
+    })
+  );
+};
