@@ -19,14 +19,38 @@ router.get("/", function(req, res) {
       renderBody["positionSelected"] = pos;
     }
   } else if (req.query["playerName"]) query["Name"] = new RegExp(`.*${req.query["playerName"].split("_").join(".*")}.*`, "i");
+  let page = 1;
+  if (req.query["page"] && !isNaN(+req.query["page"])) {
+    page = req.query["page"];
+  }
 
+  let howManies = 0;
   mu.connect()
-    .then(client => mu.getPlayers(client, query))
+    .then(client => mu.howManyPlayers(client, query))
+    .then(count => {
+      howManies = count;
+      return mu
+        .connect()
+        .then(secondCliente => mu.getPlayers(secondCliente, query, page));
+    })
+    .catch(error => {
+      console.log("err", error);
+      res.json({ error: error });
+      return undefined;
+    })
+
     .then(players => {
-      if (req.query["mode"] && req.query["mode"].toLowerCase() == "json")
-        res.json(players);
-      else
-        res.render("players", ((renderBody["players"] = players), renderBody));
+      if (players)
+        if (req.query["mode"] && req.query["mode"].toLowerCase() == "json")
+          res.json({ players: players, count: howManies, page: page });
+        else
+          res.render(
+            "players",
+            (((renderBody["players"] = players),
+            (renderBody["count"] = howManies),
+            (renderBody["page"] = page)),
+            renderBody)
+          );
     });
 });
 

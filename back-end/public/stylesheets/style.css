@@ -142,6 +142,14 @@ a[data-toggle="collapse"] {
 }
 
 /* ---------------------------------------------------
+    PAGINATION STYLE
+----------------------------------------------------- */
+
+.pagination .page-item {
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------
     PLAYERS STYLE
 ----------------------------------------------------- */
 
@@ -154,8 +162,7 @@ a[data-toggle="collapse"] {
   right: 0;
 }
 
-#content .container .row .playerList,
-.playerResume {
+#content .container .row .playerResume {
   border-radius: 10px;
   background-color: #f6f6f6;
 }
@@ -447,43 +454,43 @@ i {
     PLAYERS DETAIL STYLE
 ----------------------------------------------------- */
 
-#content .container .playerDetail{
+#content .container .playerDetail {
   border-radius: 10px;
   background-color: #f6f6f6;
   padding: 10px;
 }
 
-#content .container .playerDetail .detailHeader img{
+#content .container .playerDetail .detailHeader img {
   width: 80%;
 }
 
-#content .container .playerDetail .detailHeader .row .detailInfo h6{
+#content .container .playerDetail .detailHeader .row .detailInfo h6 {
   margin: 0px;
 }
 
-#content .container .playerDetail .detailHeader .row .detailInfo p{
+#content .container .playerDetail .detailHeader .row .detailInfo p {
   margin: 0px;
   padding-bottom: 10px;
 }
 
-#content .container .playerDetail .detailHeader .row .detailInfo h2{
+#content .container .playerDetail .detailHeader .row .detailInfo h2 {
   margin: 0px;
   font-weight: bold;
 }
 
-#content .container .playerDetail .detailHeader .row .detailInfo img{
+#content .container .playerDetail .detailHeader .row .detailInfo img {
   width: 20%;
 }
 
-#content .container .playerDetail .detailHeader .row .detailImg{
+#content .container .playerDetail .detailHeader .row .detailImg {
   padding-right: 0px;
 }
 
-#content .container .playerDetail .detailHeader .row .detailInfo{
+#content .container .playerDetail .detailHeader .row .detailInfo {
   padding-left: 0px;
 }
 
-#content .container .playerDetail .detailHeader .row .detailSlot h4{
+#content .container .playerDetail .detailHeader .row .detailSlot h4 {
   background-color: #999;
   border-radius: 10px 10px 0px 0px;
   margin-bottom: 0;
@@ -491,35 +498,35 @@ i {
   text-align: center;
 }
 
-#content .container .playerDetail .detailHeader .row .detailSlot p{
+#content .container .playerDetail .detailHeader .row .detailSlot p {
   background-color: #ffffff;
   border-radius: 0px 0px 10px 10px;
   padding: 5px;
   text-align: center;
 }
 
-#content .container .playerDetail .detailStats{
+#content .container .playerDetail .detailStats {
   padding-top: 15px;
 }
 
-#content .container .playerDetail .detailStats h4{
+#content .container .playerDetail .detailStats h4 {
   color: #fff;
-  padding: 5px; 
+  padding: 5px;
   background-color: var(--dark-blue);
   border-radius: 10px 10px 0px 0;
 }
 
-#content .container .playerDetail .detailStats td{
+#content .container .playerDetail .detailStats td {
   background-color: #fff;
 }
 
-#content .container .playerDetail .detailStats .statsContent{
+#content .container .playerDetail .detailStats .statsContent {
   background-color: #fff;
   margin-top: -10px;
   border-radius: 0px 0px 10px 10px;
   padding: 0px 0px 10px 0px;
 }
 
-#content .container .playerDetail .detailStats .statsContent table{
+#content .container .playerDetail .detailStats .statsContent table {
   width: 100%;
 }
