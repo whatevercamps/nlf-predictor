@@ -1,0 +1,130 @@
+{
+  "templates": [
+    {
+      "positions": {
+        "QB": [
+          {
+            "position": "QB",
+            "name": "Tom Brady",
+            "stats": {
+              "gamesPlayer": 16,
+              "gamesStarted": 16,
+              "passing": {
+                "PassesCompleted": 56,
+                "PassesAttempted": 67,
+                "PointConversion": 2.4,
+                "Yards": 4.057,
+                "Average": 8,
+                "TouchDowns": 24,
+                "Interceptions": 8,
+                "Ratio": 56
+              },
+              "rushing": {
+                "RushesAttempted": 23,
+                "Yards": 132,
+                "TouchDowns": 3
+              },
+              "fantasy": {
+                "PointsPerGame": 20.2,
+                "Points": 350
+              }
+            }
+          }
+        ],
+        "WR": [
+          {},
+          {
+            "name": "Michael Thomas",
+            "position": "WR",
+            "stats": {
+              "gamesPlayer": 16,
+              "gamesStarted": 16,
+              "receiving": {
+                "Receptions": 123,
+                "Targets": 25,
+                "Yards": 2000,
+                "TouchDowns": 21,
+                "Long": 20,
+                "YardsperTarget": 12,
+                "YardsPerReception": 6
+              },
+              "rushing": {
+                "RushesAttempted": 27,
+                "Yards": 127,
+                "Average": 13,
+                "TouchDonws": 5
+              },
+              "fumbles": {
+                "Fumbles": 3,
+                "Lost": 2
+              },
+              "fantasy": {
+                "PointsPerGame": 26.2,
+                "Points": 420
+              }
+            }
+          },
+          {}
+        ],
+        "RB": [
+          {
+            "name": "Todd Gurley III",
+            "position": "RB",
+            "stats": {
+              "passing": {
+                "CMP": 123,
+                "ATT": 123
+              },
+              "rushing": {
+                "CMP": 131,
+                "ATT": 1123
+              }
+            }
+          },
+          {},
+          {}
+        ],
+        "W/R": [
+          {
+            "position": "RB",
+            "name": "Saquon Barkley",
+            "stats": 13
+          }
+        ],
+        "DST": [
+          {
+            "position": "DST",
+            "name": "Minnesota Vikings",
+            "stats": {
+              "defense": {
+                "YDS/G": 123
+              }
+            }
+          }
+        ],
+        "K": [
+          {
+            "position": "K",
+            "name": "Stephen Gotskowski",
+            "stats": {
+              "defense": {
+                "YDS/G": 123
+              }
+            }
+          }
+        ],
+        "TE": [
+          {
+            "position": "TE",
+            "name": "Travis Kelce",
+            "stats": {
+              "defense": {
+                "YDS/G": 123
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
