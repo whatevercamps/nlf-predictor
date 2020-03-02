@@ -3,6 +3,8 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var passport = require('passport');
+var expressSession = require('express-session');
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -20,11 +22,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/players", playersRouter);
 app.use("/templates", templatesRouter);
+
+passport.serializeUser(function(user, done) {
+    done(null, user._id);
+  });
+   
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
