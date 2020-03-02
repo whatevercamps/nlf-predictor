@@ -12,7 +12,8 @@ positionSelector.addEventListener("change", evt => {
   }
 });
 
-const showPlayers = players => {
+const showPlayers = data => {
+  let players = data["players"];
   const playersUl = document.querySelector("#playerL");
 
   console.log("padre", playersUl);
@@ -60,10 +61,12 @@ const onSearch = evt => {
   console.log("params", queryParam);
   fetch(`/players?playerName=${queryParam}&mode=json`)
     .then(res => res.json())
-    .then(players => {
+    .then(data => {
+      let players = data["players"];
+      console.log("players", players);
       if (!players || !players.length)
         playersUl.innerHTML = " Player not found :(";
-      else showPlayers(players);
+      else showPlayers(data);
     });
 
   evt.preventDefault();

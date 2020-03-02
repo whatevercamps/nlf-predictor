@@ -21,12 +21,12 @@ const mongoUtils = () => {
     return client.connect();
   };
 
-  mu.getPlayers = (client, query) => {
-    const players = client.db(dbName).collection("players");
-
-    return players
+  mu.getPlayers = (client, query, page) => {
+    const playersHandler = client.db(dbName).collection("players");
+    return playersHandler
       .find(query)
-      .limit(10)
+      .skip(20 * (page - 1))
+      .limit(20)
       .toArray()
       .finally(() => {
         console.log("cerrando cliente");
@@ -65,6 +65,13 @@ const mongoUtils = () => {
       });
   };
 
+  mu.howManyPlayers = (client, query) => {
+    const playersHandler = client.db(dbName).collection("players");
+    return playersHandler.countDocuments(query).finally(() => {
+      console.log("cerrando cliente");
+      client.close();
+    });
+  };
   return mu;
 };
 
