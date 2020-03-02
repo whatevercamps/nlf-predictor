@@ -44,6 +44,18 @@ router.get("/detail/:id", function(req, res) {
     })
 });
 
+router.get("/:id", function(req, res) {
+  mu.connect()
+    .then(client => mu.findOneByID(client, req.params.id))
+    .then(player => {
+      console.log("player", player);
+      return player;
+    })
+    .then(player => {
+      res.render("playerResume", {"player": player})
+    })
+});
+
 // router.get("/players2", function(req, res) {
 //   const query = {
 //     Position: new RegExp(`.*${req.params.query}.*`, "i")
