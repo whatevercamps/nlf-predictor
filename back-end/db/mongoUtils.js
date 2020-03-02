@@ -88,7 +88,7 @@ const mongoUtils = () => {
     const templates = client.db(dbName).collection("templates");
     return templates.insertOne(template).finally(() => client.close());
   };
-  
+
   return mu;
 };
 
