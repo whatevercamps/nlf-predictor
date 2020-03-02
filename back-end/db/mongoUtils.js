@@ -1,8 +1,8 @@
 "use strict";
 
 const MongoClient = require("mongodb").MongoClient;
-const dotenv = require("dotenv");
 const ObjectID = require("mongodb").ObjectID;
+const dotenv = require("dotenv");
 dotenv.config();
 
 const mongoUtils = () => {
@@ -38,18 +38,19 @@ const mongoUtils = () => {
     const players = client.db(dbName).collection("players");
 
     // when searching by id we need to create an ObjectID
-    return players.findOne({ _id: new ObjectID(id) }).finally(() => {
+    console.log("id", id);
+    return players.findOne({ _id: new ObjectID(id || "") }).finally(() => {
       console.log("cerrando cliente");
       client.close();
     });
   };
 
-  mu.getPlayers2 = client => {
+  mu.getPlayers2 = (client, query) => {
     const players = client.db(dbName).collection("players");
 
     console.log("players", players);
     return players
-      .find({})
+      .find(query)
       .limit(5)
       .toArray()
       .finally(() => {

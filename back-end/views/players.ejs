@@ -36,13 +36,19 @@
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
   </head>
   <body>
-    <div class="wrapper">
-      <!-- Sidebar  -->
-      <nav id="sidebar">
-        <div id="dismiss">
-          <i class="fa fa-arrow-left"></i>
-        </div>
-
+    <div class="lds-container">
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div
+    id="dismiss"
+    style="position: fixed; top: 95vh; left: 190px; z-index: 10000; background-color: rgba(0, 0, 0, 0);"
+  >
+    <i class="fa fa-arrow-left"></i>
+  </div>
+  <nav class="wrapper" hidden>
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+      <span>
         <div class="sidebar-header">
           <h3>NFL Predictor</h3>
         </div>
@@ -52,34 +58,47 @@
             <a href="index.html">Home</a>
           </li>
           <li>
-            <a href="#" class="activeMenu">Players</a>
+            <a href="/players/">Players</a>
           </li>
           <li>
-            <a href="templates.html">Templates</a>
+            <a href="/templates.html" class="activeMenu">Templates</a>
           </li>
-          <li>
-            <a href="#">Contact</a>
+        </ul>
+      </span>
+    </nav>
+
+    <div id="content">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand"
+          ><span style="color:whitesmoke">NFL</span
+          ><span style="color:#B40805">PREDICTOR</span></a
+        >
+        <ul class="navbar-nav mr-auto">
+          <button type="button" id="sidebarCollapse" class="btn">
+            <i class="fa fa-align-left"></i>
+          </button>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <!-- <li class="nav-item options-noauth">
+            <a class="nav-link">
+              <span style="color:greenyellow"
+                ><i class="fa fa-sign-in" style="color: greenyellow"></i>
+                Signin</span
+              >
+            </a>
+          </li>
+          <li class="nav-item options-noauth active">
+            <a class="nav-link"><i class="fa fa-edit"></i> Signup</a>
+          </li> -->
+          <li id="signout-button" class="nav-item options-auth active">
+            <a class="nav-link">
+              <span style="color: #C43B37"
+                ><i class="fa fa-sign-out"></i> Signout</span
+              >
+            </a>
           </li>
         </ul>
       </nav>
-
-      <!-- Page Content  -->
-      <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-              <div class="col-lg-9">
-                <button type="button" id="sidebarCollapse" class="btn">
-                  <i class="fa fa-align-left"></i>
-                </button>
-              </div>
-              <div class="col-lg-1 login">
-                <a href="/users/login" class="text-right"><i class="fa fa-sign-in"></i> Login</a>
-              </div>
-              <div class="col-lg-1 register">
-                <a href="/users/register/" class="text-right"><i class="fa fa-edit"></i> Register</a>
-              </div>
-          </div>
-        </nav>
 
         <div class="container">
           
@@ -147,6 +166,7 @@
                 data-playerresumeteam=<%= player.Team %>
                 data-playerresumepoints=<%= player.Seasons[0].FantasyPoints %>
                 data-playerresumeseason=<%= player.Seasons[0].Season %>
+                data-playerid=<%= player.PlayerID %>
                 data-playerresumeplayed=<%= player.Seasons[0].Played %>
                 data-playerresumeposition=<%= player.Position %>
                 data-playerresumecmp=<%= player.Seasons[0].PassingCompletions %>
@@ -157,7 +177,8 @@
                 >
                   <div class="col-3 playerImage">
                     <img
-                      src="../img/tom_brady.png"
+                      style="width:70px; height:70px"
+                      src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/nfl/low-res/<%= player.PlayerID %>.png"
                       alt="Tom Brady Profile Image"
                       class="playerI"
                     />
@@ -170,7 +191,7 @@
                     <h5><%= player.Seasons[0].FantasyPoints %>pts</h5>
                     <p id="season"><%= player.Seasons[0].Season %> season</p>
                   </div>
-                  <div class="col-lg-1 align-self-center playerExtra">
+                  <div class="col-1 align-self-center playerExtra">
                     <a href="/players/detail/<%= player._id %>"
                       ><i class="fa fa-ellipsis-v justify-content-center text-dark"></i
                     ></a>
@@ -183,7 +204,9 @@
               <div class="row resumeInfo">
                 <div class="col-lg-6">
                   <img
-                    src="../img/tom_brady2.png"
+                    id="playerresumeimage"
+                    style="width: 226px; height:164px"
+                    src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/nfl/low-res/<%= players[0].PlayerID %>.png"
                     alt="Tom Brady Profile Image"
                     class="playerImg"
                   />
@@ -197,7 +220,7 @@
               </div>
               <div class="card">
                 <span id="player-resume-number">12</span>
-                <div class="row resumeInfo2">
+                <div class="row resumeInfo2" >
                   <div class="col-lg-6">
                     <p>Played</p>
                     <strong id="player-resume-played"><%= players[0].Seasons[0].Played %></strong>
@@ -208,6 +231,18 @@
                   </div>
                 </div>
               </div>
+              <span style="z-index:10" id="addPlayerTemplateContainer">
+                <button 
+                id="addPlayerTemplateButton"
+                data-playerresumename=<%= players[0].Name %>
+                data-playerresumeteam=<%= players[0].Team %>
+                data-season=<%= players[0].Seasons[0].Season %>
+                data-position=<%= players[0].Position %>
+                data-playerid=<%= players[0].PlayerID %>
+                data-points=<%= players[0].Seasons[0].FantasyPoints %>
+                data-playerresumeid=<%= players[0]._id %>
+                >Add player <i class="fa fa-plus"></i></button>
+                </span>
               <div class="row">
                 <div class="col-md-8 starStats">
                   <img
@@ -238,27 +273,37 @@
             </div>
           </div>
 
-          <div id="floating-template">
-            <div class="row">
-              <div class="col-6">
-                Players selected
+          <div id="floating-template" class="collap">
+            <div class="container-fluid">
+              <div class="row" style="padding: 10px; margin-bottom: 20px; background-color: #B40805; border-radius: 10px 10px 0px 0px;">
+                <div class="col-6">
+                  <h5 style="font-weight: normal; color: whitesmoke;">
+                  Template 
+                 </h5>
+                </div>
+                <div class="col-6 justify-content-end">
+                  <a href="#" id="goUp" onclick="goUp()"><i class="fa fa-chevron-up"></i></a>
+                </div>
               </div>
-              <div class="col-6 justify-content-end">
-                <a href="#" id="goUp" onclick="goUp()"><i class="fa fa-chevron-up"></i></a>
+              <div class="row">
+                <div class="container-fluid">
+                  
+                  <div class="row">
+                    <div class="col-12">
+                        <div id="listPlayersTemplate" class="container-fluid">
+                        </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <ul>
-              <% players.forEach((player) =>{ %>
-                <li><%= player.Name %> added</li>
-              <% }); %>
-              </ul>
-            </div>
+            
           </div>
         </div>
       </div>
       <div class="overlay"></div>
     </div>
+    <script src="/javascripts/auth.js"></script>
 
     <script src="/javascripts/listPlayers.js"></script>
     <!-- JQuery link -->
@@ -284,10 +329,10 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
-
         var playerResumeReference = $(".playerResume");
         var playerListColReference = $("#playerL");
         var playerListHeaderReference = $(".headerContent");
+        
 
         var referenceCurrentHeight = playerResumeReference.innerHeight();
         var headerHeight = playerListHeaderReference.innerHeight();
@@ -319,8 +364,15 @@
     </script>
     <script>
         function goUp(){
-          document.getElementById('floating-template').style.height = '200px';
-          const playerDiv = document.createElement("div");
+          let templatesDiv = document.getElementById('floating-template');
+          let currentClass = templatesDiv.className;
+          console.log("classname", currentClass);
+          if(currentClass == "collap"){
+            templatesDiv.className = "nocollap";
+          }
+          else if (currentClass == "nocollap") {
+            templatesDiv.className = "collap";
+          }
         }
     </script>
   </body>

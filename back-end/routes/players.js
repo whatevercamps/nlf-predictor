@@ -7,7 +7,7 @@ const mu = mongoUtils();
 /* GET users listing. */
 router.get("/", function(req, res) {
   console.log("queryparams", req.query);
-  let query = {};
+  let query = { PlayerUrlString: { $not: /.*team-details.*/ } };
   let renderBody = { positionSelected: false };
   if (req.query["pos"]) {
     let pos = req.query["pos"].toUpperCase();
@@ -47,7 +47,11 @@ router.get("/", function(req, res) {
     .then(players => {
       if (players)
         if (req.query["mode"] && req.query["mode"].toLowerCase() == "json")
-          res.json({ players: players, count: howManies, page: page });
+          res.json({
+            players: players,
+            count: howManies,
+            page: page
+          });
         else
           res.render(
             "players",
@@ -73,22 +77,4 @@ router.get("/detail/:id", function(req, res) {
     });
 });
 
-router.get("/:id", function(req, res) {
-  mu.connect()
-    .then(client => mu.findOneByID(client, req.params.id))
-    .then(player => {
-      console.log("player", player);
-      return player;
-    })
-    .then(player => {
-      res.render("playerResume", { player: player });
-    });
-});
-
-// Data endpoint //
-router.get("/playersE", (req, res) => {
-  mu.connect()
-    .then(client => mu.getPlayers2(client))
-    .then(players => res.json(players));
-});
 module.exports = router;

@@ -25,13 +25,16 @@
     />
   </head>
   <body>
-    <div class="wrapper">
-      <!-- Sidebar  -->
-      <nav id="sidebar">
-        <div id="dismiss">
-          <i class="fa fa-arrow-left"></i>
-        </div>
-
+    <div
+    id="dismiss"
+    style="position: fixed; top: 95vh; left: 190px; z-index: 10000; background-color: rgba(0, 0, 0, 0);"
+  >
+    <i class="fa fa-arrow-left"></i>
+  </div>
+  <nav class="wrapper" hidden>
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+      <span>
         <div class="sidebar-header">
           <h3>NFL Predictor</h3>
         </div>
@@ -41,39 +44,56 @@
             <a href="index.html">Home</a>
           </li>
           <li>
-            <a href="#" class="activeMenu">Players</a>
+            <a href="/players/">Players</a>
           </li>
           <li>
-            <a href="#">Templates</a>
+            <a href="/templates.html" class="activeMenu">Templates</a>
           </li>
-          <li>
-            <a href="#">Contact</a>
+        </ul>
+      </span>
+    </nav>
+
+    <div id="content">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand"
+          ><span style="color:whitesmoke">NFL</span
+          ><span style="color:#B40805">PREDICTOR</span></a
+        >
+        <ul class="navbar-nav mr-auto">
+          <button type="button" id="sidebarCollapse" class="btn">
+            <i class="fa fa-align-left"></i>
+          </button>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <!-- <li class="nav-item options-noauth">
+            <a class="nav-link">
+              <span style="color:greenyellow"
+                ><i class="fa fa-sign-in" style="color: greenyellow"></i>
+                Signin</span
+              >
+            </a>
+          </li>
+          <li class="nav-item options-noauth active">
+            <a class="nav-link"><i class="fa fa-edit"></i> Signup</a>
+          </li> -->
+          <li id="signout-button" class="nav-item options-auth active">
+            <a class="nav-link">
+              <span style="color: #C43B37"
+                ><i class="fa fa-sign-out"></i> Signout</span
+              >
+            </a>
           </li>
         </ul>
       </nav>
-      <!-- Page Content -->
-      <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <div class="col-lg-9">
-              <button type="button" id="sidebarCollapse" class="btn">
-                <i class="fa fa-align-left"></i>
-              </button>
-            </div>
-            <div class="col-lg-1 login">
-              <a href="/users/login/" class="text-right"><i class="fa fa-sign-in"></i> Login</a>
-            </div>
-            <div class="col-lg-1 register">
-              <a href="/users/register/" class="text-right"><i class="fa fa-edit"></i> Register</a>
-            </div>
-          </div>
-        </nav>
         <div class="container">
             <div class="playerDetail">
               <div class="detailHeader">
                 <div class="row">
                     <div class="col-lg-2 detailImg">
-                      <img src="/img/tom_brady.png" alt="">
+                      <img 
+                      style="width: 133px; height:113px"
+                      src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/nfl/low-res/<%= player.PlayerID %>.png"
+                      alt="">
                     </div>
                     <div class="col-lg-6 detailInfo">
                       <h2><%= player.Name %></h2>
@@ -404,6 +424,8 @@
         </div>
       </div>
     </div>
+
+    <script src="/javascripts/auth.js"></script>
 
     <script src="/javascripts/listPlayers.js"></script>
     <!-- JQuery link -->
