@@ -145,6 +145,7 @@
                 data-playerresumeyds=<%= player.Seasons[0].PassingYards %>
                 data-playerresumeint=<%= player.Seasons[0].Interceptions %>
                 data-playerresumepts=<%= player.Seasons[0].FantasyPoints %>
+                data-playerresumeid=<%= player._id %>
                 >
                   <div class="col-3 playerImage">
                     <img
@@ -162,7 +163,7 @@
                     <p id="season"><%= player.Seasons[0].Season %> season</p>
                   </div>
                   <div class="col-lg-1 align-self-center playerExtra">
-                    <a href="/<%= player._id %>"
+                    <a href="/players/detail/<%= player._id %>"
                       ><i class="fa fa-ellipsis-v justify-content-center text-dark"></i
                     ></a>
                   </div>
@@ -223,7 +224,7 @@
                 </div>
               </div>
               <div class="row justify-content-end">
-                <a href="" class="text-right">See details</a>
+                <a href="/players/detail/<%= players[0]._id %>" class="text-right" id="player-resume-id">See details</a>
               </div>
             </div>
           </div>

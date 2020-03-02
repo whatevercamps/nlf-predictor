@@ -21,6 +21,8 @@ let playerResumeYDS = document.querySelector("#player-resume-yds");
 let playerResumeINT = document.querySelector("#player-resume-int");
 let playerResumePTS = document.querySelector("#player-resume-pts");
 
+let playerResumeId = document.querySelector("#player-resume-id");
+
 let currentPos = null;
 let currentPlayerName = null;
 let currentPage = 1;
@@ -40,6 +42,8 @@ players.forEach(player =>
     playerResumeYDS.innerHTML = player.dataset.playerresumeyds;
     playerResumeINT.innerHTML = player.dataset.playerresumeint;
     playerResumePTS.innerHTML = player.dataset.playerresumepts;
+
+    playerResumeId.innerHTML = player.dataset.playerresumeid;
   })
 );
 
@@ -130,6 +134,8 @@ const showPlayers = data => {
     playerDiv.dataset.playerresumeint = player.Seasons[0].Interceptions;
     playerDiv.dataset.playerresumepts = player.Seasons[0].FantasyPoints;
 
+    playerDiv.dataset.playerresumeid = player._id;
+
     playerDiv.innerHTML = `
     <div class="col-lg-3 playerImage">
       <img
@@ -166,6 +172,8 @@ const showPlayers = data => {
       playerResumeYDS.innerHTML = playerDiv.dataset.playerresumeyds;
       playerResumeINT.innerHTML = playerDiv.dataset.playerresumeint;
       playerResumePTS.innerHTML = playerDiv.dataset.playerresumepts;
+
+      playerResumeId.innerHTML = playerDiv.dataset.playerresumeid;
     });
 
     playersUl.appendChild(playerDiv);
