@@ -41,16 +41,15 @@ a:focus {
 }
 
 .navbar a {
-  color:var(--red);
+  color: var(--red);
 }
 
-.navbar .login{
+.navbar .login {
   padding: 0px 0px 0px 40px;
 }
 
-.navbar .register{
+.navbar .register {
   padding: 0px;
- 
 }
 
 .wrapper {
@@ -182,7 +181,6 @@ a[data-toggle="collapse"] {
 
 #content .container .row .playerList {
   height: 90vh;
-  margin-right: 6px;
   padding: 20px 0px 10px 0px;
 }
 
@@ -236,7 +234,6 @@ a[data-toggle="collapse"] {
 }
 
 #content .container .row .playerResume {
-  margin-left: 6px;
   padding: 20px 20px 5px 20px;
   height: 90vh;
 }
@@ -548,6 +545,19 @@ i {
     ERROR STYLE
 ----------------------------------------------------- */
 
-.error{
+.error {
   background-color: var(--dark-blue);
+}
+
+/* ---------------------------------------------------
+    FLOATING DIV TEMPLATE STYLE
+----------------------------------------------------- */
+
+.floating-template {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 30vw;
+  height: 40px;
+  background-color: aqua;
 }
