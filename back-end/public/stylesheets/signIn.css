@@ -13,23 +13,24 @@ body {
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
-  background-color:#003876;
-  font-family: 'Nunito Sans';
+  background-color: #003876;
+  font-family: "Nunito Sans";
 }
 
-div{
+div {
   width: 100%;
   height: 100%;
   background-color: #003876;
-  font-family: 'Nunito Sans';
+  font-family: "Nunito Sans";
 }
 
-div h1, label{
+div h1,
+label {
   color: #fff;
 }
 
-div p{
-  color:#fff;
+div p {
+  color: #fff;
 }
 
 .form-signin {
@@ -51,8 +52,26 @@ div p{
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] {
+
+.form-signin input[type="text"] {
   margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-right: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#form-signup input[type="email"] {
+  margin-bottom: -1px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-right: 0;
+
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -62,7 +81,7 @@ div p{
   border-top-right-radius: 0;
 }
 
-.form-signin .btn{
-  background-color:#2dc3ed;
+.form-signin .btn {
+  background-color: #2dc3ed;
   color: #fff;
 }

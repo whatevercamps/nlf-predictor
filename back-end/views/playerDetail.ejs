@@ -25,7 +25,7 @@
     />
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" hidden>
       <!-- Sidebar  -->
       <nav id="sidebar">
         <div id="dismiss">
@@ -53,20 +53,21 @@
       </nav>
       <!-- Page Content -->
       <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <div class="col-lg-9">
-              <button type="button" id="sidebarCollapse" class="btn">
-                <i class="fa fa-align-left"></i>
-              </button>
-            </div>
-            <div class="col-lg-1 login">
-              <a href="/users/login/" class="text-right"><i class="fa fa-sign-in"></i> Login</a>
-            </div>
-            <div class="col-lg-1 register">
-              <a href="/users/register/" class="text-right"><i class="fa fa-edit"></i> Register</a>
-            </div>
-          </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <a class="navbar-brand"
+            ><span style="color:whitesmoke">NFL</span
+            ><span style="color:#B40805">PREDICTOR</span></a
+          >
+
+          <ul class="navbar-nav ml-auto">
+            <li id="signout-button" class="nav-item options-auth active">
+              <a class="nav-link">
+                <span style="color: #C43B37"
+                  ><i class="fa fa-sign-out"></i> Signout</span
+                >
+              </a>
+            </li>
+          </ul>
         </nav>
         <div class="container">
             <div class="playerDetail">
@@ -404,6 +405,8 @@
         </div>
       </div>
     </div>
+
+    <script src="/javascripts/auth.js"></script>
 
     <script src="/javascripts/listPlayers.js"></script>
     <!-- JQuery link -->

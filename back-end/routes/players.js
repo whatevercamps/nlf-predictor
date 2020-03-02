@@ -73,22 +73,4 @@ router.get("/detail/:id", function(req, res) {
     });
 });
 
-router.get("/:id", function(req, res) {
-  mu.connect()
-    .then(client => mu.findOneByID(client, req.params.id))
-    .then(player => {
-      console.log("player", player);
-      return player;
-    })
-    .then(player => {
-      res.render("playerResume", { player: player });
-    });
-});
-
-// Data endpoint //
-router.get("/playersE", (req, res) => {
-  mu.connect()
-    .then(client => mu.getPlayers2(client))
-    .then(players => res.json(players));
-});
 module.exports = router;

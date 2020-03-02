@@ -5,6 +5,12 @@ const positionSelector = document.querySelector("#positionSelector");
 const paginsSenders = document.querySelectorAll(".page-item");
 
 const players = document.querySelectorAll(".player");
+let addPlayerToTemplateContainer = document.querySelector(
+  "#addPlayerTemplateContainer"
+);
+let addPlayerToTemplateButton = document.querySelector(
+  "#addPlayerTemplateButton"
+);
 
 //Player editable datafields
 let playerResumeName = document.querySelector("#player-resume-name");
@@ -42,11 +48,52 @@ players.forEach(player =>
     playerResumeYDS.innerHTML = player.dataset.playerresumeyds;
     playerResumeINT.innerHTML = player.dataset.playerresumeint;
     playerResumePTS.innerHTML = player.dataset.playerresumepts;
-    
+
+    addPlayerToTemplateButton.dataset.playerresumename =
+      player.dataset.playerresumename;
+    addPlayerToTemplateButton.dataset.playerresumeteam =
+      player.dataset.playerresumeteam;
+
+    let button = document.createElement("button");
+    button.id = "addPlayerTemplateButton";
+    button.dataset.playerresumename = player.dataset.playerresumename;
+    button.dataset.playerresumeteam = player.dataset.playerresumeteam;
+    button.addEventListener("click", () => {
+      addPlayerToTemplate({
+        name: player.dataset.playerresumename,
+        team: player.dataset.playerresumeteam
+      });
+      let addPlayerToTemplateList = document.querySelector(
+        "#listPlayersTemplate"
+      );
+      let row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = player.dataset.playerresumename;
+
+      addPlayerToTemplateList.appendChild(row);
+    });
+    button.innerText = "Add player";
+
+    // addPlayerToTemplateContainer.innerHTML = `
+    // <button
+    // id="addPlayerTemplateButton"
+    // style="z-index:10"
+    // data-playerresumename="${player.dataset.playerresumename}"
+    // data-playerresumeteam="${player.dataset.playerresumeteam}"
+    // >Add playeras</button>`;
+    addPlayerToTemplateContainer.appendChild(button);
+
+    // addPlayerToTemplateUl.innerHTML = "";
+    // let li = document.createElement("li");
+    // li.id = "liPlayersTemplate";
+    // li.innerHTML = player.dataset.playerresumename;
+
+    // addPlayerToTemplateUl.appendChild(li);
+
     const link = `/players/detail/${player.dataset.playerresumeid}`;
 
     console.log("link", link);
-    
+
     playerResumeId.innerHTML = `<a href="${link}" class="text-right">See details</a>`;
   })
 );
@@ -88,21 +135,21 @@ const getPlayersJSON = (currentPlayerName, currentPos, currentPage) => {
     }`
   );
 };
-
-positionSelector.addEventListener("change", evt => {
-  if (evt.target.value) {
-    const playersUl = document.querySelector("#playerL");
-    playersUl.innerHTML = "Querying players";
-    currentPos = evt.target.value.toString();
-    console.log("prev currentPos", currentPos);
-    currentPos =
-      currentPos == "All positions" ? null : currentPos.split(" ")[0];
-    currentPage = 1;
-    getPlayersJSON(currentPlayerName, currentPos, currentPage)
-      .then(res => res.json())
-      .then(showPlayers);
-  }
-});
+if (positionSelector)
+  positionSelector.addEventListener("change", evt => {
+    if (evt.target.value) {
+      const playersUl = document.querySelector("#playerL");
+      playersUl.innerHTML = "Querying players";
+      currentPos = evt.target.value.toString();
+      console.log("prev currentPos", currentPos);
+      currentPos =
+        currentPos == "All positions" ? null : currentPos.split(" ")[0];
+      currentPage = 1;
+      getPlayersJSON(currentPlayerName, currentPos, currentPage)
+        .then(res => res.json())
+        .then(showPlayers);
+    }
+  });
 
 paginsSenders.forEach(paginSender =>
   paginSender.addEventListener("click", () => {
@@ -163,7 +210,6 @@ const showPlayers = data => {
     </div>`;
 
     playerDiv.addEventListener("click", () => {
-      console.log("name", playerDiv.dataset);
       playerResumeName.innerHTML = playerDiv.dataset.playerresumename;
       playerResumeTeam.innerHTML = playerDiv.dataset.playerresumeteam;
       playerResumePoints.innerHTML = playerDiv.dataset.playerresumepoints;
@@ -178,6 +224,25 @@ const showPlayers = data => {
       playerResumePTS.innerHTML = playerDiv.dataset.playerresumepts;
 
       playerResumeId.innerHTML = playerDiv.dataset.playerresumeid;
+
+      addPlayerToTemplateButton.dataset.playerresumename =
+        playerDiv.dataset.playerresumename;
+      addPlayerToTemplateButton.dataset.playerresumeteam =
+        playerDiv.dataset.playerresumeteam;
+
+      addPlayerToTemplateContainer.innerHTML = "";
+      let button = document.createElement("button");
+      button.id = "addPlayerTemplateButton";
+      button.addEventListener("click", () => console.log("kjasdjkoa"));
+      button.innerText = "Add player";
+      // addPlayerToTemplateContainer.innerHTML = `
+      // <button
+      // id="addPlayerTemplateButton"
+      // style="z-index:10"
+      // data-playerresumename="${player.dataset.playerresumename}"
+      // data-playerresumeteam="${player.dataset.playerresumeteam}"
+      // >Add playeras</button>`;
+      addPlayerToTemplateContainer.appendChild(button);
     });
 
     playersUl.appendChild(playerDiv);
@@ -211,4 +276,23 @@ const onSearch = evt => {
   evt.preventDefault();
 };
 
-formSearch.addEventListener("submit", onSearch);
+const addPlayerToTemplate = player => {
+  let templateArray = localStorage.getItem("templateArray")
+    ? { ...JSON.parse(localStorage.getItem("templateArray")) }
+    : { arr: [] };
+  let arr = templateArray["arr"];
+  arr.push(player);
+  templateArray["arr"] = arr;
+  localStorage.setItem("templateArray", JSON.stringify(templateArray));
+};
+if (addPlayerToTemplateButton)
+  addPlayerToTemplateButton.addEventListener("click", evt => {
+    console.log("holii", evt.target.dataset.playerresumename);
+
+    let name = evt.target.dataset.playerresumename;
+    let team = evt.target.dataset.playerresumeteam;
+
+    addPlayerToTemplate({ name: name, team: team });
+  });
+
+if (formSearch) formSearch.addEventListener("submit", onSearch);
