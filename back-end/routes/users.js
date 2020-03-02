@@ -5,8 +5,12 @@ const mongoUtils = require("../db/mongoUtils.js");
 const mu = mongoUtils();
 
 /* GET users listing. */
-router.get("/", function(req, res) {
+router.get("/login", function(req, res) {
   res.render("loginForm");
+});
+
+router.get("/register", function(req, res) {
+  res.render("registerForm");
 });
 
 // passport/login.js

@@ -85,22 +85,10 @@ router.get("/:id", function(req, res) {
     });
 });
 
-// router.get("/players2", function(req, res) {
-//   const query = {
-//     Position: new RegExp(`.*${req.params.query}.*`, "i")
-//   };
-
-//   mu.connect()
-//     .then(mu.getPlayers2(query).then(players => {
-//       res.render("players", {"players": players});
-//     })
-//     );
-// });
-
 // Data endpoint //
 router.get("/playersE", (req, res) => {
   mu.connect()
-    .then(mu.getPlayers)
+    .then(client => mu.getPlayers2(client))
     .then(players => res.json(players));
 });
 module.exports = router;

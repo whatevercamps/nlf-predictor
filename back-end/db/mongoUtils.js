@@ -44,11 +44,13 @@ const mongoUtils = () => {
     });
   };
 
-  mu.getPlayers2 = (client, query) => {
+  mu.getPlayers2 = (client) => {
     const players = client.db(dbName).collection("players");
 
+    console.log("players", players);
     return players
-      .find(query)
+      .find({})
+      .limit(5)
       .toArray()
       .finally(() => {
         console.log("cerrando cliente");

@@ -1,4 +1,4 @@
-// var createError = require("http-errors");
+var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
@@ -32,30 +32,30 @@ app.use("/users", usersRouter);
 app.use("/players", playersRouter);
 app.use("/templates", templatesRouter);
 
-passport.serializeUser(function(user, done) {
-    done(null, user._id);
-  });
+// passport.serializeUser(function(user, done) {
+//     done(null, user._id);
+//   });
    
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
-  });
+//   passport.deserializeUser(function(id, done) {
+//     User.findById(id, function(err, user) {
+//       done(err, user);
+//     });
+//   });
 
 // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
+app.use(function(req, res, next) {
+  next(createError(404));
+});
 
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message();
-//   res.locals.error =req.app.get("env") === "development" ? err : {};
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render("error");
-// });
-
+  // render the error page
+  res.status(err.status || 500);
+  res.render("error");
+});
 
 module.exports = app;
