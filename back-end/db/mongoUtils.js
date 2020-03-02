@@ -2,7 +2,7 @@
 
 const MongoClient = require("mongodb").MongoClient;
 const dotenv = require("dotenv");
-// var ObjectId = require("mongodb").ObjectID;
+const ObjectID = require("mongodb").ObjectID;
 dotenv.config();
 
 const mongoUtils = () => {
@@ -34,12 +34,21 @@ const mongoUtils = () => {
       });
   };
 
+  mu.findOneByID = (client, id) => {
+    const players = client.db(dbName).collection("players");
+
+    // when searching by id we need to create an ObjectID
+    return players.findOne({ _id: new ObjectID(id) }).finally(() => {
+      console.log("cerrando cliente");
+      client.close();
+    });
+  };
+
   mu.getPlayers2 = (client, query) => {
     const players = client.db(dbName).collection("players");
 
     return players
       .find(query)
-      .limit(10)
       .toArray()
       .finally(() => {
         console.log("cerrando cliente");
