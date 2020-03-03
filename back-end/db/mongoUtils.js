@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const ObjectID = require("mongodb").ObjectID;
 dotenv.config();
 
+//Mateo León: Sería bueno permitir variables de entorno locales por si se quiere probar localmente el proyecto, ya que en este momento no corre localmente
 const mongoUtils = () => {
   var mu = {};
   let dbHostName = process.env.dbHostName || "";
@@ -13,9 +14,10 @@ const mongoUtils = () => {
   let dbPassword = process.env.dbPassword || "";
 
   mu.connect = () => {
+    //Mateo Léon: Sería bueno colocar una variable de entorno por defecto para correr local
     //mongodb+srv://admin:admin@nfl-db-jh1co.mongodb.net/test?retryWrites=true&w=majority
     const url = `mongodb+srv://${dbUser}:${dbPassword}@${dbHostName}?retryWrites=true&w=majority`;
-    console.log(url);
+      //Mateo Leon: Eliminar o comentar console.log
 
     const client = new MongoClient(url, { useNewUrlParser: true });
     return client.connect();
@@ -29,7 +31,7 @@ const mongoUtils = () => {
       .limit(20)
       .toArray()
       .finally(() => {
-        console.log("cerrando cliente");
+      //Mateo Leon: Eliminar o comentar console.log
         client.close();
       });
   };
@@ -39,7 +41,7 @@ const mongoUtils = () => {
 
     // when searching by id we need to create an ObjectID
     return players.findOne({ _id: new ObjectID(id) }).finally(() => {
-      console.log("cerrando cliente");
+      //Mateo Leon: Eliminar o comentar console.log
       client.close();
     });
   };
@@ -53,7 +55,7 @@ const mongoUtils = () => {
       .limit(5)
       .toArray()
       .finally(() => {
-        console.log("cerrando cliente");
+            //Mateo Leon: Eliminar o comentar console.log
         client.close();
       });
   };
@@ -61,7 +63,7 @@ const mongoUtils = () => {
   mu.insertUsers = (client, users) => {
     const playersHandler = client.db(dbName).collection("users");
     playersHandler.insert(users).finally(() => {
-      console.log("Users inserted");
+      //Mateo Leon: Eliminar o comentar console.log
       client.close();
     });
   };
@@ -69,7 +71,7 @@ const mongoUtils = () => {
   mu.insertPlayers = (client, players) => {
     const playersHandler = client.db(dbName).collection("players");
     playersHandler.insert(players).finally(() => {
-      console.log("Players inserted");
+      //Mateo Leon: Eliminar o comentar console.log
       client.close();
     });
   };
@@ -79,15 +81,15 @@ const mongoUtils = () => {
     return UsersCollection.find(query)
       .toArray()
       .finally(() => {
-        console.log("cerrando cliente");
-        client.close();
+      //Mateo Leon: Eliminar o comentar console.log
+      client.close();
       });
   };
 
   mu.howManyPlayers = (client, query) => {
     const playersHandler = client.db(dbName).collection("players");
     return playersHandler.countDocuments(query).finally(() => {
-      console.log("cerrando cliente");
+      //Mateo Leon: Eliminar o comentar console.log
       client.close();
     });
   };
