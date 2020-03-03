@@ -4,6 +4,10 @@ var router = express.Router();
 const mongoUtils = require("../db/mongoUtils.js");
 const mu = mongoUtils();
 
+/*
+Mateo León: El código no está documentado así que no se entiende que hace cada función.
+*/
+
 /* GET users listing. */
 router.get("/", function(req, res) {
   console.log("queryparams", req.query);
@@ -39,7 +43,7 @@ router.get("/", function(req, res) {
         .then(secondCliente => mu.getPlayers(secondCliente, query, page));
     })
     .catch(error => {
-      console.log("err", error);
+    //Mateo León: Eliminar o comentar error
       res.json({ error: error });
       return undefined;
     })
@@ -65,7 +69,7 @@ router.get("/detail/:id", function(req, res) {
   mu.connect()
     .then(client => mu.findOneByID(client, req.params.id))
     .then(player => {
-      console.log("player", player);
+    //Mateo León: Comentar o eliminar console.log
       return player;
     })
     .then(player => {
@@ -77,7 +81,7 @@ router.get("/:id", function(req, res) {
   mu.connect()
     .then(client => mu.findOneByID(client, req.params.id))
     .then(player => {
-      console.log("player", player);
+    //Mateo León: Comentar o eliminar console.log
       return player;
     })
     .then(player => {
