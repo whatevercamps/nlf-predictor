@@ -6,6 +6,10 @@ var router = express.Router();
 const mongoUtils = require("../db/mongoUtils.js");
 const mu = mongoUtils();
 
+//Mateo León: Para objetivos de la clase se utiliza passport y no JWT
+
+//Mateo León: Falta documentación de código
+
 const comparePasswords = (candidatePassword, hash, callback) => {
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
     if (err) throw err;
