@@ -22,7 +22,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(expressSession({secret: 'mySecretKey'}));
+//Mateo León: Sería bueno incluir variables de entorno en express session
+app.use(expressSession({secret: 'mySecretKey' || process.env.SECRETKEY}));
 app.use(passport.initialize());
 app.use(passport.session());
 
