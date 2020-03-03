@@ -5,6 +5,9 @@ A web application that intends to help NFL Fantasy players to build up mock temp
 
 The usear can create templates and add players to them. Also view an overall punctuation for the template.
 
+# Server 
+The project was hosted on a cloud server at Heroku. You can see it by following this link https://secure-hamlet-38600.herokuapp.com/
+
 # Technologies
 
 The application runs an Express Server listening on port 5000. The data is on a mongodb data basea and the front-end is manipulated with EJS views.
